@@ -1,31 +1,35 @@
 @import "./../setup";
 
-@mixin doc-header($bar-height: doc-dp(7), $page-min-width: 1170px) {
+@mixin doc-header() {
   $speed: doc-speed(base);
 
-  @include -doc-toolbar(doc-dp(.5), $page-min-width, doc-shadow(2));
+  @include -doc-toolbar();
   @include -doc-overflow-menu;
-  @include -doc-menu(doc-shadow(4), $speed / 4);
-  @include -doc-toggle-button($speed: $speed / 2,
+  @include -doc-menu();
+  @include -doc-toggle-button(
+    $speed: $speed,
     $handle-checked-color: doc-color(blue, 900),
-    $rail-checked-color: doc-color(blue)
+    $rail-checked-color: doc-color(blue),
     $handle-unchecked-color: doc-color(grey, 100),
     $rail-unchecked-color: doc-color(grey, 300)
   );
 }
 
-@mixin -doc-toolbar($offset, $width: doc-dp(30), $shadow) {
+@mixin -doc-toolbar($offset: doc-dp(.5), $width: doc-dp(30), $shadow: doc-shadow(2)) {
    $size: doc-dp(2);
+   $zindex: 10;
+   $title-font-size: 21px;
+   $icon-size: 24px;
 
   .doc-toolbar {
-    background-color: $doc-brand-lightest;
+    background-color: doc-color(grey, 100);
     box-shadow: $shadow;
     left: 0;
     min-width: $width;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: $doc-zindex;
+    z-index: $zindex;
 
     &__button {
       @include doc-button-behaviour;
@@ -33,7 +37,7 @@
       border-radius: .2em;
       border: 0;
       box-sizing: content-box;
-      font-size: 24px;
+      font-size: $icon-size;
       height: 1em;
       padding: .5em;
       width: 1em;
@@ -88,7 +92,7 @@
     }
 
     &__title {
-      font-size: $doc-font-size-h3;
+      font-size: $title-font-size;
       line-height: .7;
       flex-grow: 1;
     }
@@ -150,11 +154,12 @@
   }
 }
 
-@mixin -doc-menu($shadow, $speed) {
-  $size: 1.6rem;
+@mixin -doc-menu($shadow: doc-shadow(4), $speed: doc-speed(base) / 4) {
+  $size: doc-dp(2);
 
   .doc-menu__list {
-    background-color: $doc-white;
+    background-color: white;
+    // background-color: doc-color(white);
     border-radius: .3rem;
     box-shadow: $shadow;
     list-style: none;
@@ -169,7 +174,7 @@
     transform: scale(0.9);
     transition-duration: $speed;
     transition-property: opacity transform;
-    transition-timing-function: $doc-base-easing;
+    transition-timing-function: doc-ease(base);
 
     &:hover {
       opacity: 1;
@@ -199,14 +204,13 @@
       input {
         &:checked + label {
           &::after {
-            transform: translate(-($size + -.2rem), 1.65em);
+            transform: translate(-($size + doc-dp(.25)), 1.65em);
           }
         }
       }
     }
   }
 }
-
 
 @mixin -doc-toggle-button($speed, $handle-checked-color, $rail-checked-color, $handle-unchecked-color, $rail-unchecked-color) {
   $toggle-size: .875em;
@@ -284,3 +288,5 @@
     }
   }
 }
+
+@include doc-header();

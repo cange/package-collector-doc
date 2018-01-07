@@ -1,4 +1,4 @@
-import './main.scss'
+import './styles.scss'
 
 export default class Layout {
   constructor() {
