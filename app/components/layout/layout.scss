@@ -1,0 +1,21 @@
+.doc-layout {
+  &__header {
+    background-color: blue;
+  }
+
+  &__body {
+    background-color: red;
+  }
+
+  &__main {
+    background-color: green;
+  }
+
+  &__nav {
+    background-color: yellow;
+  }
+
+  &__footer {
+    background-color: orange;
+  }
+}

@@ -1,0 +1,29 @@
+@function doc-color($color, $shade: 500) {
+  $colors: (
+    black: #000000,
+    white: #ffffff,
+    grey: (
+      50:  #FAFAFA,
+      100: #F5F5F5,
+      200: #EEEEEE,
+      300: #E0E0E0,
+      400: #BDBDBD,
+      500: #9E9E9E,
+      600: #757575,
+      700: #616161,
+      800: #424242,
+      900: #212121
+    )
+  );
+
+  @if $color == grey {
+    @return map-get(map-get($colors, $color), $shade);
+  }
+
+  @return map-get($colors, $color);
+}
+
+@function doc-dp($size) {
+  $base: 8px;
+  @return $base * $size;
+}
