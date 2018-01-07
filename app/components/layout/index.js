@@ -1,8 +1,8 @@
-import './layout.scss'
+import './main.scss'
 
 export default class Layout {
   constructor() {
-    this.defaults = {
+    this.propsDefault = {
       nav: 'nav',
       footer: 'footer',
       header: 'header',
@@ -11,16 +11,16 @@ export default class Layout {
   }
 
   render(props = {}) {
-    const sections = Object.assign({}, this.defaults, props)
+    props = Object.assign({}, this.propsDefault, props)
 
     return `
     <div class="doc-layout">
-      <header class="doc-layout__header">${sections.header}</header>
+      <header class="doc-layout__header">${props.header}</header>
       <div class="doc-layout__body">
-        <main class="doc-layout__main">${sections.main}</main>
-        <nav class="doc-layout__nav">${sections.nav}</nav>
+        <main class="doc-layout__main">${props.main}</main>
+        <nav class="doc-layout__nav">${props.nav}</nav>
       </div>
-      <footer class="doc-layout__footer">${sections.footer}</footer>
+      <footer class="doc-layout__footer">${props.footer}</footer>
     </div>
     `
   }

@@ -1,3 +1,6 @@
+/// @param {Keyword} $color - Expect color name e.g. `blue`
+/// @param {Number} $shade [500] - The value of the color tone
+/// @returns {Color} hex
 @function doc-color($color, $shade: 500) {
   $colors: (
     black: #000000,
@@ -13,17 +16,114 @@
       700: #616161,
       800: #424242,
       900: #212121
+    ),
+    blue: (
+      50: #E3F2FD,
+      100: #BBDEFB,
+      200: #90CAF9,
+      300: #64B5F6,
+      400: #42A5F5,
+      500: #2196F3,
+      600: #1E88E5,
+      700: #1976D2,
+      800: #1565C0,
+      900: #0D47A1
     )
   );
 
-  @if $color == grey {
+  @if $color == grey or $color blue {
     @return map-get(map-get($colors, $color), $shade);
   }
 
   @return map-get($colors, $color);
 }
 
+/// FIXME Find the best way to calculate the proper value of a dp.
+/// @param {Number} $size - The number of Density-independent pixels (dp) units to return
+/// @link https://material.io/guidelines/layout/units-measurements.html#units-measurements-density-independent-pixels-dp
+/// @returns {Number} Size of `dp` in pixel
 @function doc-dp($size) {
   $base: 8px;
   @return $base * $size;
+}
+/// @param {Keyword} $speed
+/// @returns {Number} milliseconds
+@function doc-speed($speed) {
+  $speeds: (
+    base: 192ms
+  );
+
+  @return map-get($speeds, $speed);
+}
+
+/// The elevation based on https://material.io/guidelines/material-design/elevation-shadows.html
+/// @param {Number} $elevation - The elevation of shadow
+/// @param {Color} $shadow-color [black]
+/// @returns {List} shadow styles
+@function docs-shadow($elevation, $shadow-color: black) {
+  $umbra: rgba($shadow-color, .14);
+  $penumbra: rgba($shadow-color, .12);
+  $ambient: rgba($shadow-color, .2);
+
+  @if $elevation <= 0 {
+    $elevation: 1;
+  }
+  @else if $elevation == 5 {
+    $elevation: 6;
+  }
+  @else if $elevation == 7 {
+    $elevation: 8;
+  }
+  @else if $elevation > 9 and $elevation < 12 {
+    $elevation: 12;
+  }
+  @else if $elevation > 12 and $elevation < 16 {
+    $elevation: 16;
+  }
+  @else if $elevation > 16 {
+    $elevation: 24;
+  }
+
+  $elevations: (
+    dp1:  (0 0      .3rem        $umbra, 0 .2rem .2rem        $penumbra, 0 .1rem  .2rem  $ambient),
+    dp2:  (0 0      .4rem        $umbra, 0 .3rem .4rem        $penumbra, 0 .1rem  .5rem  $ambient),
+    dp3:  (0 .3rem  .3rem        $umbra, 0 .3rem .4rem        $penumbra, 0 .1rem  .8rem  $ambient),
+    dp4:  (0 .2rem  .4rem        $umbra, 0 .4rem .5rem        $penumbra, 0 .1rem  1rem   $ambient),
+    dp6:  (0 .6rem  1rem         $umbra, 0 .1rem 1.8rem       $penumbra, 0 .3rem  .5rem  $ambient),
+    dp8:  (0 .8rem  1rem   .1rem $umbra, 0 .3rem 1.4rem .3rem $penumbra, 0 .4rem  1.5rem $ambient),
+    dp9:  (0 .9rem  1.2rem .1rem $umbra, 0 .3rem 1.6rem .2rem $penumbra, 0 .5rem  .6rem  $ambient),
+    dp12: (0 1.2rem 1.7rem .2rem $umbra, 0 .5rem 2.2rem .4rem $penumbra, 0 .7rem  .8rem  $ambient),
+    dp16: (0 1.6rem 2.4rem .2rem $umbra, 0 .6rem 3rem   .5rem $penumbra, 0 .8rem  1rem   $ambient),
+    dp24: (0 2.4rem 3.8rem .3rem $umbra, 0 .9rem 4.6rem .8rem $penumbra, 0 1.1rem 1.5rem $ambient)
+  );
+
+  @return map-get($elevations, dp#{$elevation});
+}
+
+/// @param {Keyword} $breakpoint
+/// @returns {Number} pixel
+@function docs-breakpoint($breakpoint) {
+  $breakpoints: (
+    xsmall: 480px,
+    small: 600px,
+    medium: 1024px,
+    large: 1440px,
+    xlarge: 1920px
+  );
+
+  @return map-get($breakpoints, $breakpoint);
+}
+
+
+/// @param {Keyword} $easing
+/// @returns {Function} `cubic-bezier`
+@function doc-ease($easing) {
+  $easings: (
+    base: cubic-bezier(0.4, 0.0, 0.2, 1),
+    out: cubic-bezier(0.0, 0.0, 0.2, 1),
+    in: cubic-bezier(0.4, 0.0, 1, 1),
+    'in-out': cubic-bezier(0.4, 0.0, 0.6, 1)
+  );
+
+  @return map-get($easings, $easing);
 }

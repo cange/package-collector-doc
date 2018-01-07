@@ -1,0 +1,67 @@
+@import "./../setup";
+@import "./footer";
+
+@mixin doc-subnav {
+  .doc-subnav {
+    align-items: center;
+    display: flex;
+    height: doc-dp(5);
+    padding-left: doc-dp(2);
+    padding-right: doc-dp(2);
+    border-bottom: 1px solid doc-color(grey, 600);
+  }
+}
+
+@mixin doc-layout($nav-width: doc-dp(30), $content-min-width: 1170px, $border-color: doc-color(grey)) {
+  .doc-layout {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    &__body {
+      display: flex;
+      flex: 1;
+      margin-top: doc-dp(7);
+    }
+
+    &__main {
+      flex: 1;
+    }
+
+    &__nav {
+      border-right: 1px solid doc-color(gray-light);
+      order: -1;
+      flex-basis: doc-dp(30);
+      background-color: doc-color(white);
+    }
+
+    /*
+     * Set `flex-shrink` to `0` to prevent some browsers from letting these items shrink to smaller than their content's default minimum size. See
+     * http://bit.ly/1Mn35US for details.
+     */
+    &__header {
+       flex: none;
+    }
+
+    &__footer {
+       flex: none;
+    }
+  }
+
+  @include doc-breakpoint(medium, up) {
+    .doc-layout {
+      &__nav {
+        flex-basis: $nav-width;
+      }
+
+      &__body {
+        flex-direction: row;
+        flex: 1;
+      }
+
+      &__main {
+        flex: 1;
+      }
+    }
+  }
+}
