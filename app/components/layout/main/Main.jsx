@@ -1,12 +1,13 @@
-import './styles.scss'
+import './styles'
+import React from 'react'
 
-export default {
+export default class Main extends React.Component {
   render() {
-    return `
+    return (
       <div>
         <h1>Package Collector Documentation</h1>
         <div>Hello webpack</div>
       </div>
-    `
+    )
   }
 }

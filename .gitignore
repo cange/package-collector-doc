@@ -57,7 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
-dist/main.css
-dist/application.js
-dist/application.js.map
-dist/main.css.map
+dist/*.css
+dist/*.js
+dist/*.js.map
+dist/*.css.map

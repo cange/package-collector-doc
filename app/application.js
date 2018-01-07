@@ -1,11 +1,5 @@
-import main from './components/main'
-import Layout from './components/layout'
-import Header from './components/header'
+import React from 'react'
+import ReactDom from 'react-dom'
+import { Layout } from './components/layout'
 
-const layout = new Layout()
-const header = new Header()
-
-document.body.innerHTML = layout.render({
-  main: main.render(),
-  header: header.render()
-})
+ReactDom.render(<Layout nav="my nav" />, document.getElementById('mount'))

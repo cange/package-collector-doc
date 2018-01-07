@@ -1,3 +1,5 @@
+@import "./../../setup";
+
 .doc-footer {
   background-color: doc-color(grey, 100);
   border-top: 1px solid doc-color(grey, 300);
@@ -11,7 +13,7 @@
     flex-grow: 1;
   }
 
-  &__claim {
+  &__copyright {
     float: right;
   }
 }

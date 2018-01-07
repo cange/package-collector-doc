@@ -60,7 +60,7 @@
 /// @param {Number} $elevation - The elevation of shadow
 /// @param {Color} $shadow-color [black]
 /// @returns {List} shadow styles
-@function docs-shadow($elevation, $shadow-color: black) {
+@function doc-shadow($elevation, $shadow-color: black) {
   $umbra: rgba($shadow-color, .14);
   $penumbra: rgba($shadow-color, .12);
   $ambient: rgba($shadow-color, .2);
