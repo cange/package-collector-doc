@@ -1,4 +1,5 @@
 import './styles'
+import React from 'react'
 
 export default () => (
   <div className="doc-footer">

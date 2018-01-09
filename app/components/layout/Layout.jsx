@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Header } from './header'
 import { Footer } from './footer'
 import { Main } from './main'
+import { Nav } from './nav'
 
 export default class Layout extends React.Component {
   render() {
@@ -16,7 +17,9 @@ export default class Layout extends React.Component {
           <main className="doc-layout__main">
             <Main />
           </main>
-          <nav className="doc-layout__nav">nav</nav>
+          <nav className="doc-layout__nav">
+            <Nav />
+          </nav>
         </div>
         <footer className="doc-layout__footer">
           <Footer />

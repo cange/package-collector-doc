@@ -49,6 +49,12 @@ export default {
           // use style-loader in development
           fallback: 'style-loader'
         })
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
       }
     ]
   },
