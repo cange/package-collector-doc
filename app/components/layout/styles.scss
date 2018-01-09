@@ -1,5 +1,10 @@
 @import "./../setup";
 
+body {
+  color: doc-color(grey, 900);
+  font-family: Roboto, sans-serif;
+}
+
 @mixin doc-subnav {
   .doc-subnav {
     align-items: center;
