@@ -1,42 +1,4 @@
-/// @param {Keyword} $color - Expect color name e.g. `blue`
-/// @param {Number} $shade [500] - The value of the color tone
-/// @returns {Color} hex
-@function doc-color($color, $shade: 500) {
-  $colors: (
-    black: #000000,
-    white: #ffffff,
-    grey: (
-      50:  #FAFAFA,
-      100: #F5F5F5,
-      200: #EEEEEE,
-      300: #E0E0E0,
-      400: #BDBDBD,
-      500: #9E9E9E,
-      600: #757575,
-      700: #616161,
-      800: #424242,
-      900: #212121
-    ),
-    blue: (
-      50: #E3F2FD,
-      100: #BBDEFB,
-      200: #90CAF9,
-      300: #64B5F6,
-      400: #42A5F5,
-      500: #2196F3,
-      600: #1E88E5,
-      700: #1976D2,
-      800: #1565C0,
-      900: #0D47A1
-    )
-  );
-
-  @if $color == grey or $color blue {
-    @return map-get(map-get($colors, $color), $shade);
-  }
-
-  @return map-get($colors, $color);
-}
+@import "./colors";
 
 /// FIXME Find the best way to calculate the proper value of a dp.
 /// @param {Number} $size - The number of Density-independent pixels (dp) units to return

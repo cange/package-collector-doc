@@ -16,6 +16,7 @@ $border-color: doc-color(grey);
   }
 
   &__main {
+    background-color: doc-color(indigo);
     flex: 1;
   }
 
@@ -23,7 +24,7 @@ $border-color: doc-color(grey);
     border-right: 1px solid doc-color(grey, 600);
     order: -1;
     flex-basis: doc-dp(30);
-    background-color: white;
+    background-color: doc-color(green);
   }
 
   /*
@@ -36,6 +37,7 @@ $border-color: doc-color(grey);
 
   &__footer {
     flex: none;
+    background-color: doc-color(yellow);
   }
 }
 

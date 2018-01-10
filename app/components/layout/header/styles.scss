@@ -158,8 +158,7 @@
   $size: doc-dp(2);
 
   .doc-menu__list {
-    background-color: white;
-    // background-color: doc-color(white);
+    background-color: doc-color(white);
     border-radius: .3rem;
     box-shadow: $shadow;
     list-style: none;
