@@ -11,20 +11,26 @@ $border-color: doc-color(grey);
 
   &__body {
     display: flex;
-    flex: 1;
-    margin-top: doc-dp(7);
+    flex: 1 0 auto;
+    flex-direction: column;
   }
 
   &__main {
     background-color: doc-color(indigo);
-    flex: 1;
+    flex-grow: 1;
   }
 
   &__nav {
-    border-right: 1px solid doc-color(grey, 600);
-    order: -1;
-    flex-basis: doc-dp(30);
+    $width: doc-dp(30);
     background-color: doc-color(green);
+    border-right: 1px solid doc-color(grey, 300);
+    display: none;
+    order: -1;
+
+    &.is-open {
+      flex-basis: doc-dp(30);
+      display: block;
+    }
   }
 
   /*
@@ -37,11 +43,10 @@ $border-color: doc-color(grey);
 
   &__footer {
     flex: none;
-    background-color: doc-color(yellow);
   }
 }
 
-@include doc-breakpoint(medium, up) {
+@include doc-breakpoint(small, up) {
   .doc-layout {
     &__nav {
       flex-basis: $nav-width;
@@ -49,11 +54,11 @@ $border-color: doc-color(grey);
 
     &__body {
       flex-direction: row;
-      flex: 1;
+      flex-grow: 1;
     }
 
     &__main {
-      flex: 1;
+      flex-grow: 1;
     }
   }
 }

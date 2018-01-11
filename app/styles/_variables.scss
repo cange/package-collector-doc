@@ -63,8 +63,8 @@
 }
 
 /// @param {Keyword} $breakpoint
-/// @returns {Number} pixel
-@function docs-breakpoint($breakpoint) {
+/// @returns {Number|Map} pixel
+@function doc-breakpoint($breakpoint: all) {
   $breakpoints: (
     xsmall: 480px,
     small: 600px,
@@ -72,6 +72,10 @@
     large: 1440px,
     xlarge: 1920px
   );
+
+  @if $breakpoint == all {
+    @return $breakpoints;
+  }
 
   @return map-get($breakpoints, $breakpoint);
 }

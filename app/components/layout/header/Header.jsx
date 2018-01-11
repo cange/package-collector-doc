@@ -2,8 +2,18 @@ import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from './../../icon'
+import MenuButton from './MenuButton'
 
-export default class Layout extends React.Component {
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleMenuClick = this.handleMenuClick.bind(this)
+  }
+
+  handleMenuClick(event) {
+    this.props.onMenuClick(event)
+  }
+
   render() {
     const { logo, title, version } = this.props
 
@@ -11,9 +21,7 @@ export default class Layout extends React.Component {
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
         <div className="doc-toolbar__outer">
           <div className="doc-toolbar__column">
-            <button className="doc-toolbar__button" type="button">
-              <Icon name="menu-handle"/>
-            </button>
+            <MenuButton onClick={this.handleMenuClick} />
           </div>
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__inner">
@@ -59,8 +67,13 @@ export default class Layout extends React.Component {
   }
 }
 
-Layout.propDefaults = {
+Header.propTypes = {
+  onMenuClick: PropTypes.func
+}
+
+Header.propDefaults = {
   title: 'Title',
   version: 'Version',
-  logo: 'logo'
+  logo: 'logo',
+
 }

@@ -1,3 +1,5 @@
 @import "./../../../styles/setup";
 
-// @include doc-base;
+.doc-main {
+  margin: doc-dp(2);
+}

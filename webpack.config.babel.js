@@ -17,6 +17,7 @@ export default {
     vendor: [
       'react',
       'react-dom',
+      'classnames'
     ]
   },
   output: {
