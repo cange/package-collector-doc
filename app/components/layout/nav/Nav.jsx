@@ -21,7 +21,7 @@ const ListItem = (props) => {
 
 ListItem.propTypes = {
   icon: PropTypes.string.isRequired,
-  title: PropTypes.array.isRequired
+  title: PropTypes.string.isRequired
 }
 
 export default class Nav extends React.Component {

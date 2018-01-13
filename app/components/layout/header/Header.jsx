@@ -1,8 +1,7 @@
 import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from './../../icon'
-import MenuButton from './MenuButton'
+import { IconButton } from './../../buttons'
 import logoPath from './../../../assets/logo.svg'
 
 export default class Header extends React.Component {
@@ -22,7 +21,7 @@ export default class Header extends React.Component {
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
         <div className="doc-toolbar__outer">
           <div className="doc-toolbar__column">
-            <MenuButton onClick={this.handleMenuClick} />
+            <IconButton name="menu-handle" onClick={this.handleMenuClick} />
           </div>
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__inner">
@@ -36,9 +35,7 @@ export default class Header extends React.Component {
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__menu">
               <nav className="overflow-menu" role="navigation">
-                <button className="doc-toolbar__button doc-overflow-menu__button" type="button" title="Tools">
-                  <Icon name="more-vert-handle"/>
-                </button>
+                <IconButton name="more-vert-handle" onClick={() => { }} />
                 <ul className="menu__list#doc-tools-menu" role="menu" hidden>
                   <li className="menu__item" role="menuitem">
                     <div className="toggle-button">
@@ -70,8 +67,8 @@ export default class Header extends React.Component {
 
 Header.propTypes = {
   onMenuClick: PropTypes.func,
-  title: PropTypes.sting,
-  version: PropTypes.sting
+  title: PropTypes.string,
+  version: PropTypes.string
 }
 
 Header.propDefaults = {

@@ -26,26 +26,9 @@
     box-shadow: $shadow;
     left: 0;
     min-width: $width;
-    // position: fixed;
     top: 0;
     width: 100%;
     z-index: $zindex;
-
-    &__button {
-      @include doc-button-behaviour;
-      background-color: transparent;
-      border-radius: .2em;
-      border: 0;
-      box-sizing: content-box;
-      font-size: $icon-size;
-      height: 1em;
-      padding: .5em;
-      width: 1em;
-
-      &:active {
-        box-shadow: none;
-      }
-    }
 
     &__outer {
       align-items: center;
@@ -127,20 +110,8 @@
       width: .5em;
     }
 
-    &__button {
-      @include doc-button-behaviour;
-      background-color: transparent;
-      border-radius: .2em;
-      border: 0;
-      box-sizing: content-box;
-      font-size: 24px;
-      height: 1em;
-      padding: .5em;
+    .button {
       width: .5em;
-
-      &:active {
-        box-shadow: none;
-      }
 
       &:active,
       &:focus {

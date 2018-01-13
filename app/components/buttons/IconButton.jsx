@@ -1,8 +1,9 @@
+import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from './../../icon'
+import { Icon } from './../icon'
 
-export default class MenuButton extends React.Component {
+export default class IconButton extends React.Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -14,13 +15,14 @@ export default class MenuButton extends React.Component {
 
   render() {
     return (
-      <button className="doc-toolbar__button" type="button" onClick={this.handleClick}>
-        <Icon name="menu-handle"/>
+      <button className="doc-button doc-button--icon" type="button" onClick={this.handleClick}>
+        <Icon name={this.props.name} />
       </button>
     )
   }
 }
 
-MenuButton.propTypes = {
+IconButton.propTypes = {
+  name: PropTypes.string,
   onClick: PropTypes.func
 }
