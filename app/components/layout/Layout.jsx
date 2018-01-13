@@ -1,7 +1,6 @@
 import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import { Header } from './header'
 import { Footer } from './footer'
 import { Main } from './main'
@@ -21,11 +20,6 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const navClasses = classNames(
-      'doc-layout__nav',
-      { 'is-open': this.state.isNavOpen }
-    )
-
     return (
       <div className="doc-layout">
         <header className="doc-layout__header">
@@ -35,9 +29,9 @@ export default class Layout extends React.Component {
           <main className="doc-layout__main">
             <Main />
           </main>
-          <nav className={navClasses}>
-            <Nav />
-          </nav>
+          <aside className="doc-layout__nav">
+            <Nav open={this.state.isNavOpen} />
+          </aside>
         </div>
         <footer className="doc-layout__footer">
           <Footer />

@@ -1,19 +1,54 @@
 @import "./../../../styles/setup";
 
-.doc-footer {
-  background-color: doc-color(grey, 100);
-  border-top: 1px solid doc-color(grey, 300);
-  height: doc-dp(5);
-  display: flex;
-  align-items: center;
+.doc-nav {
+  $item-size: doc-dp(6);
+  $icon-size: doc-dp(3);
 
-  padding-left: doc-dp(2);
-  padding-right: doc-dp(2);
-  &__claim {
-    flex-grow: 1;
+  position: relative;
+  height: 100%;
+
+  &.is-open {
   }
 
-  &__copyright {
-    float: right;
+  &__drawer {
+    background-color: doc-color(white);
+    height: 100%;
+    overflow: hidden;
+    width: doc-dp(30);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+  }
+
+  &__action {
+    height: $item-size;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    color: doc-color(black);
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: doc-speed(base);
+
+    &:hover,
+    &:focus {
+      background-color: doc-color(grey, 100);
+    }
+  }
+
+  &__icon {
+    box-sizing: border-box;
+    flex-basis: doc-dp(9);
+    font-size: $icon-size;
+    padding-left: doc-dp(2);
+  }
+
+  &__title {
+    font: doc-font-style(body2);
   }
 }
