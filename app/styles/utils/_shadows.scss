@@ -1,0 +1,47 @@
+////
+/// @group shadows
+////
+
+/// The elevation based on https://material.io/guidelines/material-design/elevation-shadows.html
+/// @param {Number} $elevation - The elevation of shadow
+/// @param {Color} $shadow-color [black]
+/// @returns {List} shadow styles
+@function doc-shadow($elevation, $shadow-color: black) {
+  $umbra: rgba($shadow-color, .14);
+  $penumbra: rgba($shadow-color, .12);
+  $ambient: rgba($shadow-color, .2);
+
+  @if $elevation <= 0 {
+    $elevation: 1;
+  }
+  @else if $elevation == 5 {
+    $elevation: 6;
+  }
+  @else if $elevation == 7 {
+    $elevation: 8;
+  }
+  @else if $elevation > 9 and $elevation < 12 {
+    $elevation: 12;
+  }
+  @else if $elevation > 12 and $elevation < 16 {
+    $elevation: 16;
+  }
+  @else if $elevation > 16 {
+    $elevation: 24;
+  }
+
+  $elevations: (
+    dp1:  (0 0      .3rem        $umbra, 0 .2rem .2rem        $penumbra, 0 .1rem  .2rem  $ambient),
+    dp2:  (0 0      .4rem        $umbra, 0 .3rem .4rem        $penumbra, 0 .1rem  .5rem  $ambient),
+    dp3:  (0 .3rem  .3rem        $umbra, 0 .3rem .4rem        $penumbra, 0 .1rem  .8rem  $ambient),
+    dp4:  (0 .2rem  .4rem        $umbra, 0 .4rem .5rem        $penumbra, 0 .1rem  1rem   $ambient),
+    dp6:  (0 .6rem  1rem         $umbra, 0 .1rem 1.8rem       $penumbra, 0 .3rem  .5rem  $ambient),
+    dp8:  (0 .8rem  1rem   .1rem $umbra, 0 .3rem 1.4rem .3rem $penumbra, 0 .4rem  1.5rem $ambient),
+    dp9:  (0 .9rem  1.2rem .1rem $umbra, 0 .3rem 1.6rem .2rem $penumbra, 0 .5rem  .6rem  $ambient),
+    dp12: (0 1.2rem 1.7rem .2rem $umbra, 0 .5rem 2.2rem .4rem $penumbra, 0 .7rem  .8rem  $ambient),
+    dp16: (0 1.6rem 2.4rem .2rem $umbra, 0 .6rem 3rem   .5rem $penumbra, 0 .8rem  1rem   $ambient),
+    dp24: (0 2.4rem 3.8rem .3rem $umbra, 0 .9rem 4.6rem .8rem $penumbra, 0 1.1rem 1.5rem $ambient)
+  );
+
+  @return map-get($elevations, dp#{$elevation});
+}

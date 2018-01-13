@@ -1,6 +1,7 @@
 import { join, resolve } from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].css',
@@ -8,7 +9,8 @@ const extractSass = new ExtractTextPlugin({
   disable: process.env.NODE_ENV === 'development'
 })
 const config = {
-  dist: resolve(__dirname, 'dist')
+  dist: resolve(__dirname, 'dist'),
+  app: resolve(__dirname, 'app')
 }
 
 export default {
@@ -27,7 +29,8 @@ export default {
   devtool: 'source-map', // any 'source-map'-like devtool is possible
   devServer: {
     contentBase: config.dist,
-    compress: true
+    compress: true,
+    hot: true
   },
   module: {
     rules: [
@@ -35,7 +38,7 @@ export default {
         use: 'babel-loader',
         test: /\.jsx?$/,
         include: [
-          resolve(__dirname, 'app')
+          config.app
         ],
         exclude: '/node_modules/',
       },
@@ -60,13 +63,21 @@ export default {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.css', '.scss']
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename:'vendor.js'
     }),
-    extractSass
+    extractSass,
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      path: config.dist,
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true
+    })
   ]
 }

@@ -1,14 +1,14 @@
-@import "./../../../styles/setup";
+@import "./../../../styles/utils";
 
-.doc-footer {
+.#{doc-namespace(footer)} {
+  align-items: center;
   background-color: doc-color(grey, 100);
   border-top: 1px solid doc-color(grey, 300);
-  height: doc-dp(5);
   display: flex;
-  align-items: center;
-
+  height: doc-dp(5);
   padding-left: doc-dp(2);
   padding-right: doc-dp(2);
+
   &__claim {
     flex-grow: 1;
   }

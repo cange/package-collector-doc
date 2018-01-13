@@ -1,6 +1,6 @@
-@import "./../../../styles/setup";
+@import "./../../../styles/utils";
 
-.doc-main {
+.#{doc-namespace(main)} {
   display: flex;
   justify-content: center;
   margin: doc-dp(2);

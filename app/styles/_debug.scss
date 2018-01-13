@@ -21,8 +21,12 @@
 
   @each $breakpoint, $value in doc-breakpoint(all) {
     @include doc-breakpoint($breakpoint, up) {
+      $color: doc-color(map-get($breakpoint-colors, $breakpoint));
+
       body::after {
-        background-color: doc-color(map-get($breakpoint-colors, $breakpoint));
+        background-color: $color;
+        color: complement($color);
+        font-family: monospace;
         content: "#{$breakpoint}";
       }
     }

@@ -1,10 +1,10 @@
-@import "./../../styles/setup";
+@import "./../../styles/utils";
 
 $nav-width: doc-dp(30);
 $content-min-width: 1170px;
 $border-color: doc-color(grey);
 
-.doc-layout {
+.#{doc-namespace(layout)} {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -40,7 +40,7 @@ $border-color: doc-color(grey);
 }
 
 @include doc-breakpoint(small, up) {
-  .doc-layout {
+  .#{doc-namespace(layout)} {
     &__nav {
       // flex-basis: $nav-width;
     }

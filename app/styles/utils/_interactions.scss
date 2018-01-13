@@ -1,0 +1,26 @@
+////
+/// @group interactions
+////
+
+/// @param {Color} $color [grey]
+@mixin doc-button-behaviour($color: grey) {
+  $bg-hover: rgba($color, .05);
+  $bg-active: rgba($color, .1);
+
+  $easing: doc-ease(base);
+  $speed: doc-speed(base);
+  transition-duration: $speed;
+  transition-property: background;
+  transition-timing-function: $easing;
+
+  &:hover,
+  &:focus {
+    background-color: $bg-hover;
+    outline: 0;
+  }
+
+  &:active {
+    background-color: $bg-active;
+    outline: 0;
+  }
+}

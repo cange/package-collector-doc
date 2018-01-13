@@ -1,6 +1,6 @@
-@import "./../../../styles/setup";
+@import "./../../../styles/utils";
 
-.doc-nav {
+.#{doc-namespace(nav)} {
   $item-size: doc-dp(6);
   $icon-size: doc-dp(3);
 
