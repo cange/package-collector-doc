@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from './../../icon'
 import MenuButton from './MenuButton'
+import logoPath from './../../../assets/logo.svg'
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const { logo, title, version } = this.props
+    const { title, version } = this.props
 
     return (
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
@@ -26,7 +27,7 @@ export default class Header extends React.Component {
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__inner">
               <a className="doc-toolbar__logo" href="#">
-                <img alt="{logo}" src="#logo"/>
+                <img alt="" src={logoPath} />
               </a>
               <strong className="doc-toolbar__title">{title}</strong>
               <small className="doc-toolbar__version">{version}</small>
@@ -68,11 +69,12 @@ export default class Header extends React.Component {
 }
 
 Header.propTypes = {
-  onMenuClick: PropTypes.func
+  onMenuClick: PropTypes.func,
+  title: PropTypes.sting,
+  version: PropTypes.sting
 }
 
 Header.propDefaults = {
   title: 'Title',
-  version: 'Version',
-  logo: 'logo',
+  version: 'Version'
 }

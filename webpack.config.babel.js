@@ -41,7 +41,15 @@ export default {
         include: [
           config.app
         ],
-        exclude: '/node_modules/',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        options: {
+          fix: true
+        },
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,

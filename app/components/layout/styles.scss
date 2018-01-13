@@ -1,18 +1,18 @@
 @import "./../../styles/utils";
 
 $nav-width: doc-dp(30);
-$content-min-width: 1170px;
 $border-color: doc-color(grey);
 
 .#{doc-namespace(layout)} {
   display: flex;
-  height: 100%;
   flex-direction: column;
+  height: 100%;
 
   &__body {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
+    position: relative;
   }
 
   &__main {
@@ -21,20 +21,10 @@ $border-color: doc-color(grey);
   }
 
   &__nav {
-    $width: doc-dp(30);
-    background-color: doc-color(green);
-    border-right: 1px solid doc-color(grey, 300);
-    display: none;
     order: -1;
-
-    &.is-open {
-      flex-basis: doc-dp(30);
-      display: block;
-    }
   }
 
   /*
-  * Set `flex-shrink` to `0` to prevent some browsers from letting these items shrink to smaller than their content's default minimum size. See
   * http://bit.ly/1Mn35US for details.
   */
   &__header {
@@ -49,7 +39,7 @@ $border-color: doc-color(grey);
 @include doc-breakpoint(small, up) {
   .#{doc-namespace(layout)} {
     &__nav {
-      flex-basis: $nav-width;
+      // flex-basis: $nav-width;
     }
 
     &__body {

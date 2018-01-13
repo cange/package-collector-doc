@@ -1,6 +1,5 @@
 import './styles'
 import React from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Header } from './header'
 import { Footer } from './footer'
@@ -16,7 +15,7 @@ export default class Layout extends React.Component {
     }
   }
 
-  handleHeaderMenuClick(event) {
+  handleHeaderMenuClick() {
     this.setState({ isNavOpen: !this.state.isNavOpen })
   }
 
