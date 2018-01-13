@@ -5,8 +5,8 @@ $border-color: doc-color(grey);
 
 .#{doc-namespace(layout)} {
   display: flex;
-  height: 100%;
   flex-direction: column;
+  height: 100%;
 
   &__body {
     display: flex;
