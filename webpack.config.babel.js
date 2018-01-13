@@ -2,6 +2,7 @@ import { join, resolve } from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].css',
@@ -71,6 +72,7 @@ export default {
       filename:'vendor.js'
     }),
     extractSass,
+    new CleanWebpackPlugin(['dist']),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
