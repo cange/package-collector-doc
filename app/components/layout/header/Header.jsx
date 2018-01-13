@@ -75,5 +75,4 @@ Header.propDefaults = {
   title: 'Title',
   version: 'Version',
   logo: 'logo',
-
 }

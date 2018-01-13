@@ -1,0 +1,48 @@
+////
+/// @group typography
+////
+
+/// @param {Keyword} $size-name
+/// @returns {Number} pixel
+@function doc-font-size($size-name) {
+  $sizes: (
+    display4: 112px,
+    display3: 56px,
+    display2: 45px,
+    display1: 34px,
+    headline: 24px,
+    title: 20px,
+    subheading: 16px,
+    body2: 14px,
+    body1: 14px,
+    caption: 12px,
+    button: 14px
+  );
+
+  @return map-get($sizes, $size-name);
+}
+
+/// @param {Keyword} $style-name
+/// @returns {List}
+@function doc-font-style($style-name) {
+  $medium: 500;
+  $regular: 400;
+  $light: 300;
+  $font-family: Roboto;
+
+  $styles: (
+    display4: $light doc-font-size($style-name) $font-family,
+    display3: $regular doc-font-size($style-name) $font-family,
+    display2: $regular doc-font-size($style-name) $font-family,
+    display1: $regular doc-font-size($style-name) $font-family,
+    headline: $regular doc-font-size($style-name) $font-family,
+    title: $medium doc-font-size($style-name) $font-family,
+    subheading: $regular doc-font-size($style-name) $font-family,
+    body2: $regular doc-font-size($style-name) $font-family,
+    body1: $medium doc-font-size($style-name) $font-family,
+    caption: $regular doc-font-size($style-name) $font-family,
+    button: $medium doc-font-size($style-name) $font-family
+  );
+
+  @return map-get($styles, $style-name);
+}

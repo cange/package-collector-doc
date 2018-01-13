@@ -1,0 +1,32 @@
+////
+/// @group transitions
+////
+
+/// @param {Keyword} $speed
+/// @returns {Number} milliseconds
+/// @link https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+@function doc-speed($speed) {
+  $speeds: (
+    base: 192ms,
+    large: 375ms,
+    small: 300ms,
+    enter: 225ms,
+    leave: 195ms
+  );
+
+  @return map-get($speeds, $speed);
+}
+
+/// @param {Keyword} $easing
+/// @returns {Function} `cubic-bezier`
+/// @link https://material.io/guidelines/motion/duration-easing.html#duration-easing-natural-easing-curves
+@function doc-ease($easing) {
+  $easings: (
+    base: cubic-bezier(0.4, 0.0, 0.2, 1),
+    out: cubic-bezier(0.0, 0.0, 0.2, 1),
+    in: cubic-bezier(0.4, 0.0, 1, 1),
+    'in-out': cubic-bezier(0.4, 0.0, 0.6, 1)
+  );
+
+  @return map-get($easings, $easing);
+}

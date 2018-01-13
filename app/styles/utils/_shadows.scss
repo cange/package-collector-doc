@@ -1,22 +1,6 @@
-@import "./colors";
-
-/// FIXME Find the best way to calculate the proper value of a dp.
-/// @param {Number} $size - The number of Density-independent pixels (dp) units to return
-/// @link https://material.io/guidelines/layout/units-measurements.html#units-measurements-density-independent-pixels-dp
-/// @returns {Number} Size of `dp` in pixel
-@function doc-dp($size) {
-  $base: 8px;
-  @return $base * $size;
-}
-/// @param {Keyword} $speed
-/// @returns {Number} milliseconds
-@function doc-speed($speed) {
-  $speeds: (
-    base: 192ms
-  );
-
-  @return map-get($speeds, $speed);
-}
+////
+/// @group shadows
+////
 
 /// The elevation based on https://material.io/guidelines/material-design/elevation-shadows.html
 /// @param {Number} $elevation - The elevation of shadow
@@ -60,36 +44,4 @@
   );
 
   @return map-get($elevations, dp#{$elevation});
-}
-
-/// @param {Keyword} $breakpoint
-/// @returns {Number|Map} pixel
-@function doc-breakpoint($breakpoint: all) {
-  $breakpoints: (
-    xsmall: 480px,
-    small: 600px,
-    medium: 1024px,
-    large: 1440px,
-    xlarge: 1920px
-  );
-
-  @if $breakpoint == all {
-    @return $breakpoints;
-  }
-
-  @return map-get($breakpoints, $breakpoint);
-}
-
-
-/// @param {Keyword} $easing
-/// @returns {Function} `cubic-bezier`
-@function doc-ease($easing) {
-  $easings: (
-    base: cubic-bezier(0.4, 0.0, 0.2, 1),
-    out: cubic-bezier(0.0, 0.0, 0.2, 1),
-    in: cubic-bezier(0.4, 0.0, 1, 1),
-    'in-out': cubic-bezier(0.4, 0.0, 0.6, 1)
-  );
-
-  @return map-get($easings, $easing);
 }

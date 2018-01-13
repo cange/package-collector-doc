@@ -1,0 +1,35 @@
+////
+/// @group breakpoints
+////
+
+/// @param {Keyword} $breakpoint - Expected words like `xsmall` to `xlarge`. If `all` used it returns all values as map
+/// @returns {Number|Map} pixel
+@function doc-breakpoint($breakpoint: all) {
+  $breakpoints: (
+    xsmall: 480px,
+    small: 600px,
+    medium: 1024px,
+    large: 1440px,
+    xlarge: 1920px
+  );
+
+  @if $breakpoint == all {
+    @return $breakpoints;
+  }
+
+  @return map-get($breakpoints, $breakpoint);
+}
+
+/// Renders a media query condition for the given breakpoint
+/// @param {Keyword} $breakpoint - Name of a breakpoint
+/// @see {function} doc-breakpoint
+@mixin doc-breakpoint($breakpoint, $range) {
+  $value: doc-breakpoint($breakpoint);
+
+  @if $range == up {
+    @media (min-width: $value) { @content; }
+  }
+  @else if $range == down {
+    @media (max-width: $value - 1px) { @content; }
+  }
+}
