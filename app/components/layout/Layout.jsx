@@ -20,6 +20,15 @@ export default class Layout extends React.Component {
   }
 
   render() {
+    const data = {
+      navItems: [
+        { title: 'Atoms', icon: 'inbox' },
+        { title: 'Molecules', icon: 'inbox' },
+        { title: 'Organisms', icon: 'inbox' },
+        { title: 'Templates', icon: 'inbox' }
+      ]
+    }
+
     return (
       <div className="doc-layout">
         <header className="doc-layout__header">
@@ -30,7 +39,7 @@ export default class Layout extends React.Component {
             <Main />
           </main>
           <aside className="doc-layout__nav">
-            <Nav open={this.state.isNavOpen} />
+            <Nav open={this.state.isNavOpen} items={data.navItems} />
           </aside>
         </div>
         <footer className="doc-layout__footer">

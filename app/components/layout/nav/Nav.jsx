@@ -21,13 +21,7 @@ const ListItem = (props) => {
 
 export default class Nav extends React.Component {
   render() {
-    const items = [
-      { title: 'Atoms', icon: 'inbox' },
-      { title: 'Molecules', icon: 'inbox' },
-      { title: 'Organisms', icon: 'inbox' },
-      { title: 'Templates', icon: 'inbox' }
-    ]
-    const listItems = items.map((item) => (<ListItem key={item.name} {...item} />))
+    const listItems = this.props.items.map((item) => (<ListItem key={item.title} {...item} />))
     const wrapperClasses = classNames(
       'doc-nav',
       { 'is-open': this.props.open }
@@ -46,9 +40,11 @@ export default class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  items: PropTypes.array
 }
 
 Nav.propDefaults = {
-  open: true
+  open: true,
+  items: {}
 }
