@@ -19,6 +19,11 @@ const ListItem = (props) => {
   )
 }
 
+ListItem.propTypes = {
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.array.isRequired
+}
+
 export default class Nav extends React.Component {
   render() {
     const listItems = this.props.items.map((item) => (<ListItem key={item.title} {...item} />))
@@ -41,7 +46,9 @@ export default class Nav extends React.Component {
 
 Nav.propTypes = {
   open: PropTypes.bool,
-  items: PropTypes.array
+  items: PropTypes.array,
+  icon: PropTypes.string,
+  title: PropTypes.string
 }
 
 Nav.propDefaults = {
