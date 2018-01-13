@@ -1,9 +1,18 @@
 .debug {
+  $breakpoint-colors: (
+    xsmall: 'light-green',
+    small: green,
+    medium: lime,
+    large: yellow,
+    xlarge: orange
+  );
+  $default: xsmall;
+
   body::after {
-    background-color: doc-color(orange);
+    background-color: doc-color(map-get($breakpoint-colors, $default));
     bottom: 0;
     color: doc-color(grey, 100);
-    content: "xsmall";
+    content: "#{$default}";
     font-size: .6rem;
     padding: .3em .6em;
     position: fixed;
@@ -13,6 +22,7 @@
   @each $breakpoint, $value in doc-breakpoint(all) {
     @include doc-breakpoint($breakpoint, up) {
       body::after {
+        background-color: doc-color(map-get($breakpoint-colors, $breakpoint));
         content: "#{$breakpoint}";
       }
     }
