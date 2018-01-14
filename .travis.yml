@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - "9.3.0"
+
+install:
+  - npm install yarn
+  - yarn install
+
+script:
+  - yarn lint
+  - yarn test
