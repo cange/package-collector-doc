@@ -1,6 +1,6 @@
 import './styles'
 import React from 'react'
-import { Icon } from './../../icon'
+import { Icon } from './../../icons'
 
 export default class Nav extends React.Component {
   render() {

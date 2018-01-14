@@ -1,0 +1,24 @@
+@import "./../../styles/utils";
+
+.#{doc-namespace(button)} {
+  @include doc-button-behaviour;
+  background-color: transparent;
+  border-radius: .2em;
+  border: 0;
+  box-sizing: content-box;
+
+  .#{doc-namespace(icon)} {
+    transform: inherit;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &--icon {
+    font-size: doc-dp(3);
+    height: 1em;
+    padding: .5em;
+    width: 1em;
+  }
+}

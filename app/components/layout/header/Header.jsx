@@ -1,8 +1,8 @@
 import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from './../../icon'
-import MenuButton from './MenuButton'
+import { Icon } from './../../icons'
+import { Button } from './../../buttons'
 import logoPath from './../../../assets/logo.svg'
 
 export default class Header extends React.Component {
@@ -22,7 +22,9 @@ export default class Header extends React.Component {
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
         <div className="doc-toolbar__outer">
           <div className="doc-toolbar__column">
-            <MenuButton onClick={this.handleMenuClick} />
+            <Button className="doc-button--icon" onClick={this.handleMenuClick}>
+              <Icon name="menu-handle" />
+            </Button>
           </div>
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__inner">
