@@ -1,2 +1,1 @@
-import Nav from './Nav'
-export { Nav }
+export Nav from './Nav'

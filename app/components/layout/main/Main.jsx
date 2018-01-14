@@ -1,7 +1,7 @@
 import './styles'
 import React from 'react'
 
-export default () => (
+const Main = () => (
   <div className="doc-main">
     <div className="doc-main__content">
       <h1>Package Collector Documentation</h1>
@@ -9,3 +9,5 @@ export default () => (
     </div>
   </div>
 )
+
+export default Main

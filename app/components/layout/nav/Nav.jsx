@@ -2,7 +2,7 @@ import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Icon } from './../../icon'
+import { Icon } from './../../icons'
 
 const ListItem = (props) => {
   return (

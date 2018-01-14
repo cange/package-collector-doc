@@ -1,2 +1,1 @@
-import IconButton from './IconButton'
-export { IconButton }
+export Button from './Button'

@@ -77,7 +77,7 @@ export default {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename:'vendor.js'
+      filename: 'vendor.js'
     }),
     extractSass,
     new CleanWebpackPlugin(['dist']),
@@ -86,7 +86,7 @@ export default {
     new HtmlWebpackPlugin({
       path: config.dist,
       filename: 'index.html',
-      template: 'index.html',
+      template: `${config.app}/template.html`,
       inject: true
     })
   ]
