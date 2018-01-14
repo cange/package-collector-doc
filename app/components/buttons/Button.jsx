@@ -1,9 +1,9 @@
-import './styles'
+import './styles.scss' // suffix for test runner
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export default class Button extends React.Component {
+class Button extends React.Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -23,7 +23,7 @@ export default class Button extends React.Component {
 
     return (
       <button {...props}>
-        {children && children}
+        {children}
       </button>
     )
   }
@@ -39,8 +39,10 @@ Button.propTypes = {
   onClick: PropTypes.func
 }
 
-Button.propDefaults = {
+Button.defaultProps = {
   type: 'button',
   className: '',
   onClick: () => {}
 }
+
+export default Button

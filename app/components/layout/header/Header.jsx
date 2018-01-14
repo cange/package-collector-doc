@@ -45,7 +45,7 @@ export default class Header extends React.Component {
                   <li className="menu__item" role="menuitem">
                     <div className="toggle-button">
                       <input id="doc-invert-toggle" type="checkbox" name="page-theme-inverted"/>
-                      <label htmlFor="doc-invert-toggle">Use Inverted Page Theme></label>
+                      <label htmlFor="doc-invert-toggle">Use Inverted Page Theme</label>
                     </div>
                   </li>
                   <li className="menu__item" role="menuitem">
@@ -76,7 +76,7 @@ Header.propTypes = {
   version: PropTypes.sting
 }
 
-Header.propDefaults = {
+Header.defaultProps = {
   title: 'Title',
   version: 'Version'
 }

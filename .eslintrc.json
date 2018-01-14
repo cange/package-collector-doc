@@ -1,15 +1,21 @@
 {
-  "extends":[
-    "google",
-    "react"
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "standard"
   ],
   "rules": {
-    "require-jsdoc": ["off"],
-    "valid-jsdoc": ["off"],
-    "indent": ["error", 2],
-    "semi": ["error", "never"]
+    "space-before-function-paren": ["error", "never"]
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }

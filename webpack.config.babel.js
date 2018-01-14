@@ -77,7 +77,7 @@ export default {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename:'vendor.js'
+      filename: 'vendor.js'
     }),
     extractSass,
     new CleanWebpackPlugin(['dist']),
