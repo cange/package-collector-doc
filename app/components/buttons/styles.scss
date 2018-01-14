@@ -7,9 +7,8 @@
   border: 0;
   box-sizing: content-box;
 
-.#{doc-namespace(icon)} {
+  .#{doc-namespace(icon)} {
     transform: inherit;
-    outline: blue 1px dotted;
   }
 
   &:active {
