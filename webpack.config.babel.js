@@ -1,4 +1,4 @@
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -30,8 +30,9 @@ export default {
   devtool: 'source-map', // any 'source-map'-like devtool is possible
   devServer: {
     contentBase: config.dist,
-    compress: true,
-    hot: true
+    compress: false,
+    hot: true,
+    host: '127.0.0.1'
   },
   module: {
     rules: [
@@ -44,8 +45,8 @@ export default {
         exclude: /node_modules/
       },
       {
-        test: /\.jsx?$/,
         loader: 'eslint-loader',
+        test: /\.jsx?$/,
         options: {
           fix: true
         },
@@ -77,7 +78,7 @@ export default {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.js'
+      filename: '[name].js'
     }),
     extractSass,
     new CleanWebpackPlugin(['dist']),
