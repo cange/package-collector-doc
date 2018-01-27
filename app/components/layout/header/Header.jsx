@@ -1,11 +1,16 @@
-import './styles'
+import './styles.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from './../../icons'
-import { Button } from './../../buttons'
+import { Button, Icon } from './../../essentials'
 import logoPath from './../../../assets/logo.svg'
 
-export default class Header extends React.Component {
+const propTypes = {
+  onMenuClick: PropTypes.func,
+  title: PropTypes.string,
+  version: PropTypes.string
+}
+
+class Header extends React.Component {
   constructor(props) {
     super(props)
     this.handleMenuClick = this.handleMenuClick.bind(this)
@@ -70,13 +75,6 @@ export default class Header extends React.Component {
   }
 }
 
-Header.propTypes = {
-  onMenuClick: PropTypes.func,
-  title: PropTypes.sting,
-  version: PropTypes.sting
-}
+Header.propTypes = propTypes
 
-Header.defaultProps = {
-  title: 'Title',
-  version: 'Version'
-}
+export default Header

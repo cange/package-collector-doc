@@ -1,4 +1,4 @@
-import './styles'
+import './styles.scss'
 import React from 'react'
 import classNames from 'classnames'
 import { Header } from './header'
@@ -28,7 +28,7 @@ export default class Layout extends React.Component {
     return (
       <div className="doc-layout">
         <header className="doc-layout__header">
-          <Header title="Title" logo="Logo name" version="1.0.0" onMenuClick={this.handleHeaderMenuClick} />
+          <Header title="Title" version="1.0.0" onMenuClick={this.handleHeaderMenuClick} />
         </header>
         <div className="doc-layout__body">
           <main className="doc-layout__main">

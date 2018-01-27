@@ -1,4 +1,4 @@
-import './styles'
+import './styles.scss'
 import React from 'react'
 
 const Footer = () => (

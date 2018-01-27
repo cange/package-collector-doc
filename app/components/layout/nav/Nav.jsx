@@ -1,6 +1,6 @@
-import './styles'
+import './styles.scss'
 import React from 'react'
-import { Icon } from './../../icons'
+import { Icon } from './../../essentials'
 
 export default class Nav extends React.Component {
   render() {
