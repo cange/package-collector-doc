@@ -21,7 +21,7 @@
   $title-font-size: 21px;
   $icon-size: 24px;
 
-  .#{doc-namespace(toolbar)} {
+  .doc-toolbar {
     background-color: doc-color(grey, 100);
     box-shadow: $shadow;
     left: 0;
@@ -88,7 +88,7 @@
   }
 
   @include doc-breakpoint(medium, up) {
-    .#{doc-namespace(toolbar)} {
+    .doc-toolbar {
       &__outer {
         height: doc-dp(8);
         padding-left: $offset * 2;
@@ -104,7 +104,7 @@
 }
 
 @mixin -doc-overflow-menu {
-  .#{doc-namespace(overflow-menu)} {
+  .doc-overflow-menu {
     position: relative;
 
     svg {
@@ -129,7 +129,7 @@
 
       &:active,
       &:focus {
-        ~ .#{doc-namespace(menu__list)} {
+        ~ .doc-menu__list {
           opacity: 1;
           pointer-events: auto;
           transform: scale(1);
@@ -142,7 +142,7 @@
 @mixin -doc-menu($shadow: doc-shadow(4), $speed: doc-speed(base) / 4) {
   $size: doc-dp(2);
 
-  .#{doc-namespace(menu)} {
+  .doc-menu {
     &__list {
       background-color: doc-color(white);
       border-radius: .3rem;
@@ -171,7 +171,7 @@
     &__item {
       @include doc-button-behaviour;
 
-      .#{doc-namespace(toggle-button)} {
+      .doc-toggle-button {
         padding-right: 0;
 
         label {
@@ -212,7 +212,7 @@
   $handle-unchecked-pos: translate($handle-pos-x, $handle-pos-y);
   $handle-checked-pos: translate($handle-pos-x + $rail-width - ($handle-size * .6), $handle-pos-y);
 
-  .#{doc-namespace(toggle-button)} {
+  .doc-toggle-button {
     display: $display;
     padding-right: $offset-horziontal + $rail-width + ($handle-size * .2);
 

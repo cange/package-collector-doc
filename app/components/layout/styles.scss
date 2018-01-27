@@ -3,7 +3,7 @@
 $nav-width: doc-dp(30);
 $border-color: doc-color(grey);
 
-.#{doc-namespace(layout)} {
+.doc-layout {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -37,7 +37,7 @@ $border-color: doc-color(grey);
 }
 
 @include doc-breakpoint(small, up) {
-  .#{doc-namespace(layout)} {
+  .doc-layout {
     &__nav {
       // flex-basis: $nav-width;
     }
