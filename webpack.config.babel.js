@@ -41,7 +41,7 @@ export default {
         include: [
           config.app
         ],
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
@@ -49,7 +49,7 @@ export default {
         options: {
           fix: true
         },
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -72,7 +72,7 @@ export default {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss']
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({

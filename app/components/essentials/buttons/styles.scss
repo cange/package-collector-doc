@@ -1,4 +1,4 @@
-@import "./../../styles/utils";
+@import "./../../../styles/utils";
 
 .#{doc-namespace(button)} {
   @include doc-button-behaviour;

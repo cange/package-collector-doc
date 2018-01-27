@@ -1,4 +1,4 @@
-import {mount, shallow} from 'enzyme-setup'
+import { mount, shallow } from 'enzymeSetup'
 import Button from './Button'
 import React from 'react'
 
