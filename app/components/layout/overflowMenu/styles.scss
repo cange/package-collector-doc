@@ -1,0 +1,85 @@
+@import "./../../../styles/utils";
+
+$shadow: doc-shadow(4);
+$speed: doc-speed(base) / 4;
+$width-step-mobile: doc-dp(7);
+$width-step-desktop: doc-dp(8);
+
+.doc-overflow-menu {
+  position: relative;
+
+  .doc-icon {
+    height: 1em;
+    width: .5em;
+  }
+
+  &__toggle {
+    @include doc-button-behaviour;
+    background-color: transparent;
+    border-radius: .2em;
+    border: 0;
+    box-sizing: content-box;
+    font-size: 24px;
+    height: 1em;
+    padding: .5em;
+    width: .5em;
+
+    &:active {
+      box-shadow: none;
+    }
+
+    &:active,
+    &:focus {
+      ~ .doc-overflow-menu__list {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__list {
+    background-color: doc-color(white);
+    border-radius: doc-dp(.25);
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 0;
+    min-width: $width-step-mobile * 4;
+    opacity: 0;
+    padding-bottom: doc-dp(1);
+    padding-left: 0;
+    padding-top: doc-dp(1);
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: top right;
+    transform: scale(0.9);
+    transition-duration: $speed;
+    transition-property: opacity transform;
+    transition-timing-function: doc-ease(base);
+    will-change: opacity transform;
+
+    &:hover {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+  }
+
+  &__item {
+    @include doc-button-behaviour;
+    align-items: center;
+    display: flex;
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  .doc-overflow-menu {
+    &__list {
+      min-width: $width-step-desktop * 4;
+    }
+  }
+}

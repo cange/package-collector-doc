@@ -1,278 +1,90 @@
 @import "./../../../styles/utils";
 
-@mixin doc-header() {
-  $speed: doc-speed(base);
+$offset: doc-dp(.5);
+$width: doc-dp(30);
+$shadow: doc-shadow(2);
+$size: doc-dp(2);
+$zindex: 10;
+$title-font-size: 21px;
+$icon-size: 24px;
 
-  @include -doc-toolbar();
-  @include -doc-overflow-menu;
-  @include -doc-menu();
-  @include -doc-toggle-button(
-  $speed: $speed,
-  $handle-checked-color: doc-color(blue, 900),
-  $rail-checked-color: doc-color(blue),
-  $handle-unchecked-color: doc-color(grey, 100),
-  $rail-unchecked-color: doc-color(grey, 300)
-  );
-}
+.doc-toolbar {
+  background-color: doc-color(grey, 100);
+  box-shadow: $shadow;
+  left: 0;
+  min-width: $width;
+  position: relative;
+  // position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $zindex;
 
-@mixin -doc-toolbar($offset: doc-dp(.5), $width: doc-dp(30), $shadow: doc-shadow(2)) {
-  $size: doc-dp(2);
-  $zindex: 10;
-  $title-font-size: 21px;
-  $icon-size: 24px;
+  &__outer {
+    align-items: center;
+    display: flex;
+    height: doc-dp(7);
+    justify-content: space-between;
+    padding-left: $offset;
+    padding-right: $offset;
+    position: relative;
+  }
 
-  .doc-toolbar {
-    background-color: doc-color(grey, 100);
-    box-shadow: $shadow;
-    left: 0;
-    min-width: $width;
-    // position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: $zindex;
+  &__inner {
+    display: flex;
+    align-items: center
+  }
 
-
-    &__outer {
-      align-items: center;
-      display: flex;
-      height: doc-dp(7);
-      justify-content: space-between;
-      padding-left: $offset;
-      padding-right: $offset;
-      position: relative;
-    }
-
-    &__inner {
-      display: flex;
-      align-items: center
-    }
-
-    &__column {
-      &:nth-child(2) {
-        flex-grow: 1;
-      }
-
-      &:first-child {
-        flex-basis: doc-dp(9) - $offset;
-      }
-
-      &:last-child {
-        flex-basis: doc-dp(3);
-      }
-    }
-
-    &__logo {
-      font-size: doc-dp(3);
-      box-sizing: content-box;
-      flex-basis: doc-dp(3);
-      margin-right: doc-dp(1);
-
-      img {
-        height: 1em;
-      }
-    }
-
-    &__menu {
-      margin-left: doc-dp(1);
-    }
-
-    &__title {
-      font-size: $title-font-size;
-      line-height: .7;
+  &__column {
+    &:nth-child(2) {
       flex-grow: 1;
     }
 
-    &__version {
-      float: right;
+    &:first-child {
+      flex-basis: doc-dp(9) - $offset;
+    }
+
+    &:last-child {
+      flex-basis: doc-dp(3);
     }
   }
 
-  @include doc-breakpoint(medium, up) {
-    .doc-toolbar {
-      &__outer {
-        height: doc-dp(8);
-        padding-left: $offset * 2;
-        padding-right: $offset * 2;
-      }
-      &__column {
-        &:first-child {
-          flex-basis: doc-dp(9);
-        }
-      }
-    }
-  }
-}
+  &__logo {
+    font-size: doc-dp(3);
+    box-sizing: content-box;
+    flex-basis: doc-dp(3);
+    margin-right: doc-dp(1);
 
-@mixin -doc-overflow-menu {
-  .doc-overflow-menu {
-    position: relative;
-
-    svg {
+    img {
       height: 1em;
-      width: .5em;
     }
+  }
 
-    &__button {
-      @include doc-button-behaviour;
-      background-color: transparent;
-      border-radius: .2em;
-      border: 0;
-      box-sizing: content-box;
-      font-size: 24px;
-      height: 1em;
-      padding: .5em;
-      width: .5em;
+  &__menu {
+    margin-left: doc-dp(1);
+  }
 
-      &:active {
-        box-shadow: none;
-      }
+  &__title {
+    font-size: $title-font-size;
+    line-height: .7;
+    flex-grow: 1;
+  }
 
-      &:active,
-      &:focus {
-        ~ .doc-menu__list {
-          opacity: 1;
-          pointer-events: auto;
-          transform: scale(1);
-        }
+  &__version {
+    float: right;
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  .doc-toolbar {
+    &__outer {
+      height: doc-dp(8);
+      padding-left: $offset * 2;
+      padding-right: $offset * 2;
+    }
+    &__column {
+      &:first-child {
+        flex-basis: doc-dp(9);
       }
     }
   }
 }
-
-@mixin -doc-menu($shadow: doc-shadow(4), $speed: doc-speed(base) / 4) {
-  $size: doc-dp(2);
-
-  .doc-menu {
-    &__list {
-      background-color: doc-color(white);
-      border-radius: .3rem;
-      box-shadow: $shadow;
-      list-style: none;
-      min-width: 25rem;
-      opacity: 0;
-      padding-left: 0;
-      pointer-events: none;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transform-origin: top right;
-      transform: scale(0.9);
-      transition-duration: $speed;
-      transition-property: opacity transform;
-      transition-timing-function: doc-ease(base);
-
-      &:hover {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1);
-      }
-    }
-
-    &__item {
-      @include doc-button-behaviour;
-
-      .doc-toggle-button {
-        padding-right: 0;
-
-        label {
-          user-select: none;
-          padding: $size;
-          &::before {
-            transform: translate(-$size, 1.8em);
-          }
-
-          &::after {
-            transform: translate(-($size + doc-dp(1)), 1.65em);
-          }
-        }
-
-        input {
-          &:checked + label {
-            &::after {
-              transform: translate(-($size + doc-dp(.25)), 1.65em);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@mixin -doc-toggle-button($speed, $handle-checked-color, $rail-checked-color, $handle-unchecked-color, $rail-unchecked-color) {
-  $toggle-size: .875em;
-  $display: block;
-  $handle-size: 1.125em;
-  $offset-vertical: .45em;
-  $rail-height: .8em;
-  $rail-width: 1.75em;
-  $offset-horziontal: $handle-size * .6;
-  $handle-pos-x: $offset-horziontal + $handle-size * .8;
-  $handle-pos-y: $offset-vertical + -.15em;
-  $rail-pos: translate($offset-horziontal + $rail-width, $offset-vertical);
-  $handle-unchecked-pos: translate($handle-pos-x, $handle-pos-y);
-  $handle-checked-pos: translate($handle-pos-x + $rail-width - ($handle-size * .6), $handle-pos-y);
-
-  .doc-toggle-button {
-    display: $display;
-    padding-right: $offset-horziontal + $rail-width + ($handle-size * .2);
-
-    label {
-      font-weight: normal;
-      display: $display;
-      margin-bottom: 0;
-      position: relative;
-
-      &::before {
-        background-color: $rail-unchecked-color;
-        border-radius: 1em;
-        content: '';
-        cursor: pointer;
-        display: block;
-        font-size: $toggle-size;
-        height: $rail-height;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: $rail-pos;
-        transition-duration: $speed;
-        transition-property: background-color;
-        transition-timing-function: ease-out;
-        width: $rail-width;
-      }
-
-      &::after {
-        background-color: $handle-unchecked-color;
-        border-radius: 1em;
-        box-shadow: doc-shadow(1);
-        content: '';
-        cursor: pointer;
-        display: block;
-        font-size: $toggle-size;
-        height: $handle-size;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: $handle-unchecked-pos;
-        transition-duration: $speed;
-        transition-property: transform background-color;
-        transition-timing-function: ease-out;
-        width: $handle-size;
-      }
-    }
-
-    input {
-      display: none;
-      &:checked + label {
-        &::before {
-          background-color: $rail-checked-color;
-        }
-        &::after {
-          background-color: $handle-checked-color;
-          transform: $handle-checked-pos;
-        }
-      }
-    }
-  }
-}
-
-@include doc-header();
