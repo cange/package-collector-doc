@@ -1,4 +1,4 @@
-import { render, mount, shallow } from 'enzymeSetup'
+import { mount, shallow } from 'enzymeSetup'
 import InputSwitch from './InputSwitch'
 import React from 'react'
 
