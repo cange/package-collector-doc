@@ -14,17 +14,16 @@
 }
 
 .doc-input-switch {
-  $handle-checked-color: doc-color(cyan, 900);
-  $rail-checked-color: doc-color(cyan);
-  $handle-unchecked-color: doc-color(grey, 100);
-  $rail-unchecked-color: doc-color(grey, 300);
-  $toggle-size: .875em;
-  $handle-size: 1.25em;
-  $rail-height: .875em;
-  $rail-width: 2em;
-  $offset: ($handle-size - $rail-height) / 2;
-  $handle-unchecked-x: translateX(-$offset);
-  $handle-checked-x: translateX($rail-width - $handle-size + $offset * 2);
+  $bar-checked-color: doc-color(cyan);
+  $bar-height: .625em;
+  $bar-unchecked-color: doc-color(grey, 300);
+  $bar-width: 1.625em;
+  $dot-checked-color: doc-color(cyan, 900);
+  $dot-size: .875em;
+  $dot-unchecked-color: doc-color(grey, 100);
+  $offset: ($dot-size - $bar-height) / 2;
+  $dot-unchecked-x: translateX(-$offset);
+  $dot-checked-x: translateX($bar-width - $dot-size + $offset);
 
   @include -doc-dimensions(doc-dp(2), doc-dp(6));
   align-items: center;
@@ -38,49 +37,73 @@
   user-select: none;
   width: 100%;
 
-  &__rail {
+  &:active {
+    .doc-input-switch__dot::before {
+      background-color: rgba(doc-color(grey), .75);
+      transform: scale(2);
+    }
+  }
+
+  &__bar {
     @include -doc-transition-setup(background-color);
     align-items: center;
-    background-color: $rail-unchecked-color;
+    background-color: $bar-unchecked-color;
     border-radius: 1em;
     content: '';
     cursor: pointer;
     display: block;
     display: flex;
-    font-size: $toggle-size;
-    height: $rail-height;
+    font-size: inherit;
+    height: $bar-height;
     margin-left: $offset;
     margin-right: $offset;
     position: relative;
-    width: $rail-width;
+    width: $bar-width;
   }
 
-  &__handle {
+  &__dot {
     @include -doc-transition-setup(transform background-color);
-    background-color: $handle-unchecked-color;
+    background-color: $dot-unchecked-color;
     border-radius: 1em;
     box-shadow: doc-shadow(1);
-    content: '';
     cursor: pointer;
     display: block;
-    font-size: $toggle-size;
-    height: $handle-size;
+    font-size: inherit;
+    height: $dot-size;
     position: absolute;
-    transform: $handle-unchecked-x;
-    width: $handle-size;
+    transform: $dot-unchecked-x;
+    width: $dot-size;
+    z-index: 0;
+
+    &::before {
+      @include -doc-transition-setup(transform background-color);
+      background-color: transparent;
+      border-radius: 1em;
+      content: '';
+      display: block;
+      height: inherit;
+      position: absolute;
+      width: inherit;
+      z-index: 1;
+    }
+
+    &:active {
+      &::before {
+        transform: scale(3);
+      }
+    }
   }
 
   &__input {
     display: none;
-
     &:checked ~ {
 
-      .doc-input-switch__rail {
-        background-color: $rail-checked-color;
+      .doc-input-switch__bar {
+        background-color: $bar-checked-color;
 
-        .doc-input-switch__handle {
-          background-color: $handle-checked-color;
-          transform: $handle-checked-x;
+        .doc-input-switch__dot {
+          background-color: $dot-checked-color;
+          transform: $dot-checked-x;
         }
       }
     }

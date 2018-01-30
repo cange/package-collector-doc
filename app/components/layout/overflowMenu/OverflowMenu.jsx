@@ -1,7 +1,7 @@
-import './styles.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon, InputSwitch } from './../../essentials'
+import './styles.scss'
 
 const propTypes = {
   onMenuClick: PropTypes.func,

@@ -5,35 +5,24 @@ $speed: doc-speed(base) / 4;
 $width-step-mobile: doc-dp(7);
 $width-step-desktop: doc-dp(8);
 
+@mixin -doc-active-list {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+};
+
+
 .doc-overflow-menu {
   position: relative;
 
-  .doc-icon {
-    height: 1em;
-    width: .5em;
-  }
-
   &__toggle {
-    @include doc-button-behaviour;
-    background-color: transparent;
-    border-radius: .2em;
-    border: 0;
-    box-sizing: content-box;
-    font-size: 24px;
-    height: 1em;
-    padding: .5em;
-    width: .5em;
-
-    &:active {
-      box-shadow: none;
-    }
+    padding-left: doc-dp(1);
+    padding-right: doc-dp(1);
 
     &:active,
     &:focus {
       ~ .doc-overflow-menu__list {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1);
+        @include -doc-active-list;
       }
     }
   }
@@ -63,9 +52,7 @@ $width-step-desktop: doc-dp(8);
     will-change: opacity transform;
 
     &:hover {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1);
+      @include -doc-active-list;
     }
   }
 

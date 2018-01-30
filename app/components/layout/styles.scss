@@ -1,12 +1,11 @@
 @import "./../../styles/utils";
 
 $nav-width: doc-dp(30);
-$border-color: doc-color(grey);
 
 .doc-layout {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 
   &__body {
     display: flex;
@@ -44,10 +43,6 @@ $border-color: doc-color(grey);
 
     &__body {
       flex-direction: row;
-      flex-grow: 1;
-    }
-
-    &__main {
       flex-grow: 1;
     }
   }
