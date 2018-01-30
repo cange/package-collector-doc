@@ -8,7 +8,10 @@
     "test:watch": "jest --watch",
     "lint": "eslint --ext .jsx,.js app/",
     "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "doc": "styleguidist server",
+    "doc:build": "styleguidist build"
+
   },
   "repository": {
     "type": "git",
@@ -46,6 +49,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.0.6",
     "node-sass": "^4.7.2",
+    "react-styleguidist": "^6.2.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
