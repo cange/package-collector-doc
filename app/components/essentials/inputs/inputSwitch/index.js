@@ -1,1 +1,1 @@
-export { default } from './inputSwitch'
+export InputSwitch from './inputSwitch'

@@ -1,31 +1,79 @@
 @import "./../../../../styles/utils";
 
-@mixin -doc-transition-setup($props) {
+@mixin -transition-setup($props) {
   transition-duration: doc-speed(base);
   transition-property: $props;
-  transition-timing-function: doc-ease(base);
+  transition-timing-function: doc-ease(in-out);
   will-change: $props;
 }
 
-@mixin -doc-dimensions($offset-vertical, $height) {
+@mixin -dimensions($offset-vertical, $height) {
   padding-left: $offset-vertical;
   padding-right: $offset-vertical;
   min-height: $height;
 }
 
-.doc-input-switch {
-  $bar-checked-color: doc-color(cyan);
-  $bar-height: .625em;
-  $bar-unchecked-color: doc-color(grey, 300);
-  $bar-width: 1.625em;
-  $dot-checked-color: doc-color(cyan, 900);
-  $dot-size: .875em;
-  $dot-unchecked-color: doc-color(grey, 100);
-  $offset: ($dot-size - $bar-height) / 2;
-  $dot-unchecked-x: translateX(-$offset);
-  $dot-checked-x: translateX($bar-width - $dot-size + $offset);
+@mixin -touch-behaviour {
+  .doc-input-switch__thumb::after {
+    z-index: 0;
 
-  @include -doc-dimensions(doc-dp(2), doc-dp(6));
+    &::before {
+      background-color: inherit;
+      border-radius: 1em;
+      content: '';
+      display: block;
+      height: inherit;
+      position: absolute;
+      width: inherit;
+      z-index: 2;
+    }
+
+    &::after {
+      @include -transition-setup(transform background-color);
+      background-color: transparent;
+      border-radius: 1em;
+      content: '';
+      display: block;
+      height: inherit;
+      position: absolute;
+      width: inherit;
+      z-index: 1;
+    }
+  }
+
+  &:active {
+    .doc-input-switch__thumb::after {
+      background-color: rgba($track-off-color, .25);
+      transform: scale(2.5);
+    }
+  }
+
+  .doc-input-switch__input::after {
+    &:checked:active ~ {
+      * .doc-input-switch__thumb::after {
+        background-color: rgba($track-on-color, .25);
+      }
+    }
+  }
+}
+
+.doc-input-switch {
+  $track-height: .75em;
+  $track-width: 1.75em;
+  $thumb-size: 1em;
+  $on-color: teal;
+
+  $thumb-on-color: doc-color($on-color, 500);
+  $track-on-color: doc-color($on-color, 200);
+
+  $thumb-off-color: doc-color(grey, 50);
+  $track-off-color: doc-color(grey, 500);
+
+  $offset: ($thumb-size - $track-height) / 2;
+  $thumb-off-x: translateX(-$offset);
+  $thumb-on-x: translateX($track-width - $thumb-size + $offset);
+
+  @include -dimensions(doc-dp(2), doc-dp(6));
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -37,74 +85,50 @@
   user-select: none;
   width: 100%;
 
-  &:active {
-    .doc-input-switch__dot::before {
-      background-color: rgba(doc-color(grey), .75);
-      transform: scale(2);
-    }
-  }
-
-  &__bar {
-    @include -doc-transition-setup(background-color);
+  &__track {
+    @include -transition-setup(background-color);
     align-items: center;
-    background-color: $bar-unchecked-color;
+    background-color: $track-off-color;
     border-radius: 1em;
     content: '';
     cursor: pointer;
     display: block;
     display: flex;
     font-size: inherit;
-    height: $bar-height;
+    height: $track-height;
     margin-left: $offset;
     margin-right: $offset;
     position: relative;
-    width: $bar-width;
+    user-select: none;
+    width: $track-width;
   }
 
-  &__dot {
-    @include -doc-transition-setup(transform background-color);
-    background-color: $dot-unchecked-color;
+  &__thumb {
+    @include -transition-setup((transform, background-color));
+    background-color: $thumb-off-color;
     border-radius: 1em;
     box-shadow: doc-shadow(1);
     cursor: pointer;
     display: block;
     font-size: inherit;
-    height: $dot-size;
+    height: $thumb-size;
     position: absolute;
-    transform: $dot-unchecked-x;
-    width: $dot-size;
-    z-index: 0;
-
-    &::before {
-      @include -doc-transition-setup(transform background-color);
-      background-color: transparent;
-      border-radius: 1em;
-      content: '';
-      display: block;
-      height: inherit;
-      position: absolute;
-      width: inherit;
-      z-index: 1;
-    }
-
-    &:active {
-      &::before {
-        transform: scale(3);
-      }
-    }
+    transform: $thumb-off-x;
+    user-select: none;
+    width: $thumb-size;
   }
 
   &__input {
     display: none;
+
     &:checked ~ {
+      .doc-input-switch__track {
+        background-color: $track-on-color;
+      }
 
-      .doc-input-switch__bar {
-        background-color: $bar-checked-color;
-
-        .doc-input-switch__dot {
-          background-color: $dot-checked-color;
-          transform: $dot-checked-x;
-        }
+      * .doc-input-switch__thumb {
+        background-color: $thumb-on-color;
+        transform: $thumb-on-x;
       }
     }
   }
@@ -112,6 +136,6 @@
 
 @include doc-breakpoint(medium, up) {
   .doc-input-switch__label {
-    @include -doc-dimensions(doc-dp(3), doc-dp(4));
+    @include -dimensions(doc-dp(3), doc-dp(4));
   }
 }

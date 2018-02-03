@@ -1,9 +1,9 @@
-import './styles.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { OverflowMenu } from './../overflowMenu'
 import { Button, Icon } from './../../essentials'
 import logoPath from './../../../assets/logo.svg'
+import './styles.scss'
 
 const propTypes = {
   onMenuClick: PropTypes.func,

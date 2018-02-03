@@ -32,7 +32,9 @@ module.exports = {
     contentBase: config.dist,
     compress: false,
     hot: true,
-    host: '127.0.0.1'
+    stats: 'errors-only',
+    host: '192.168.178.29'
+    // host: '127.0.0.1'
   },
   module: {
     rules: [

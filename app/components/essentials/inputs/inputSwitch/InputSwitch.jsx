@@ -49,8 +49,8 @@ class InputSwitch extends React.Component {
       <label {...props}>
         <input {...inputProps} />
         {label}
-        <span className="doc-input-switch__bar">
-          <span className="doc-input-switch__dot"></span>
+        <span className="doc-input-switch__track">
+          <span className="doc-input-switch__thumb"></span>
         </span>
       </label>
     )
