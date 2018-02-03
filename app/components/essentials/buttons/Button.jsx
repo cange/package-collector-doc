@@ -14,8 +14,8 @@ const propTypes = {
   disabled: PropTypes.bool,
   /** Text to display for blindness accessibility features */
   title: PropTypes.string,
-  /** The type of the button. [Possible values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) */
-  type: PropTypes.string,
+  /** The [type values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) of the button */
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   /** Handler to be called when the user taps the button */
   onPress: PropTypes.func
 }

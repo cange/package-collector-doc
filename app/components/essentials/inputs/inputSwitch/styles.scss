@@ -69,6 +69,11 @@
   $thumb-off-color: doc-color(grey, 50);
   $track-off-color: doc-color(grey, 500);
 
+  // Thumb Disabled: Grey 400, #BDBDBD, Opacity 100%
+  // Track Disabled: #000000, Opacity 12%
+  $thumb-disabled-color: doc-color(grey, 400);
+  $track-disabled-color: doc-color(grey, 300);
+
   $offset: ($thumb-size - $track-height) / 2;
   $thumb-off-x: translateX(-$offset);
   $thumb-on-x: translateX($track-width - $thumb-size + $offset);
@@ -129,6 +134,16 @@
       * .doc-input-switch__thumb {
         background-color: $thumb-on-color;
         transform: $thumb-on-x;
+      }
+    }
+
+    &:disabled ~ {
+      .doc-input-switch__track {
+        background-color: $track-disabled-color;
+      }
+
+      * .doc-input-switch__thumb {
+        background-color: $thumb-disabled-color;
       }
     }
   }

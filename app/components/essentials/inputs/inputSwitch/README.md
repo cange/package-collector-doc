@@ -1,10 +1,22 @@
-### Minimal setup
-
+### On/off states
 ```js
-<InputSwitch name="input-name" label="Toggle feature" />
+<div>
+  <InputSwitch name="input-name" on={true} />
+  <InputSwitch name="input-name" />
+</div>
 ```
 
-### Maximal setup
+### Disabled state
 ```js
-<InputSwitch name="input-name" label="Toggle feature" className="additional-class" activated={true} onChange={(event) => { /* event handler */ } }/>
+<div>
+  <InputSwitch name="input-name" disabled={true} on={true}/>
+  <InputSwitch name="input-name" disabled={true} />
+</div>
+```
+
+### With label
+```js
+<div>
+  <InputSwitch name="input-name" label="Labeled switch" on={true} />
+</div>
 ```
