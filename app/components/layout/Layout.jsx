@@ -10,21 +10,21 @@ const headerMenuItems = [
   {
     name: 'page-theme-inverted',
     label: 'Inverted Page Theme',
-    activated: false,
+    on: false,
     onChange: (event) => {
       console.log('Theme:target', event.target)
     }
   }, {
     name: 'doc-page-theme-contrast-dark',
     label: 'Contrast in Examples',
-    activated: true,
+    on: true,
     onChange: (event) => {
       console.log('Contrast:target', event.target)
     }
   }, {
     name: 'doc-show-example-grid',
     label: 'Grid in Examples',
-    activated: false,
+    on: false,
     onChange: (event) => {
       console.log('Example:target', event.target)
     }

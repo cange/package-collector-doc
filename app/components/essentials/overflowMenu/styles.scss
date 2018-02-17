@@ -5,18 +5,17 @@ $speed: doc-speed(base) / 4;
 $width-step-mobile: doc-dp(7);
 $width-step-desktop: doc-dp(8);
 
-@mixin -doc-hide-list {
+@mixin -hide-list {
   opacity: 0;
   transform: scale(0.9);
   pointer-events: none;
 }
 
-@mixin -doc-active-list {
+@mixin -active-list {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
 };
-
 
 .doc-overflow-menu {
   position: relative;
@@ -28,13 +27,13 @@ $width-step-desktop: doc-dp(8);
     &:active,
     &:focus {
       ~ .doc-overflow-menu__list {
-        @include -doc-active-list;
+        @include -active-list;
       }
     }
   }
 
   &__list {
-    // @include -doc-hide-list;
+    @include -hide-list;
     background-color: doc-color(white);
     border-radius: doc-dp(.25);
     box-shadow: $shadow;
@@ -56,7 +55,7 @@ $width-step-desktop: doc-dp(8);
     will-change: opacity transform;
 
     &:hover {
-      @include -doc-active-list;
+      @include -active-list;
     }
   }
 
