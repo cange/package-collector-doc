@@ -57,13 +57,8 @@ module.exports = {
       {
         test: /\.scss$/,
         use: extractSass.extract({
-          use: [{
-            loader: 'css-loader'
-          }, {
-            loader: 'sass-loader'
-          }],
-          // use style-loader in development
-          fallback: 'style-loader'
+          fallback: 'style-loader',
+          use: 'css-loader!postcss-loader!sass-loader'
         })
       },
       {
