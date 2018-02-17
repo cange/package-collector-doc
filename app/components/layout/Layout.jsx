@@ -8,24 +8,34 @@ import { Nav } from './nav'
 
 const headerMenuItems = [
   {
-    name: 'page-theme-inverted',
+    type: 'switch',
+    value: false,
     label: 'Inverted Page Theme',
-    on: false,
-    onChange: (event) => {
+    onPress: (event) => {
       console.log('Theme:target', event.target)
     }
   }, {
-    name: 'doc-page-theme-contrast-dark',
+    type: 'divider'
+  }, {
+    type: 'button',
+    label: 'Simple item',
+    onPress: (event) => {
+      console.log('Theme:target', event.target)
+    }
+  }, {
+    type: 'divider'
+  }, {
+    type: 'switch',
+    value: true,
     label: 'Contrast in Examples',
-    on: true,
-    onChange: (event) => {
+    onPress: (event) => {
       console.log('Contrast:target', event.target)
     }
   }, {
-    name: 'doc-show-example-grid',
+    type: 'switch',
+    value: false,
     label: 'Grid in Examples',
-    on: false,
-    onChange: (event) => {
+    onPress: (event) => {
       console.log('Example:target', event.target)
     }
   }

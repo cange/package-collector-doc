@@ -1,1 +1,2 @@
-export { InputSwitch } from './inputSwitch'
+import Switch from './switch'
+export { Switch }

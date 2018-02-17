@@ -10,10 +10,9 @@ const propTypes = {
   disabled: PropTypes.bool,
   /** Text to display next to the switch */
   label: PropTypes.string,
-  /** Name of the input value */
-  name: PropTypes.string.isRequired,
-  /** If true, the switch is on, otherwise is off */
-  on: PropTypes.bool,
+  /** The value of the switch. If true the switch will be turned on. */
+  value: PropTypes.bool,
+  /** The change event is fired when a change to the element's value is committed by the user. */
   onChange: PropTypes.func,
   /** Text to display for blindness accessibility features */
   title: PropTypes.string
@@ -22,36 +21,35 @@ const defaultProps = {
   className: '',
   disabled: false,
   label: '',
-  on: false,
+  value: false,
   onChange: () => {},
   title: ''
 }
 
 /** On/off switches toggle the state of a single settings option. */
-class InputSwitch extends React.Component {
+class Switch extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { on: props.on }
+    this.state = { activated: props.value }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    this.setState({ on: event.target.checked })
+    this.setState({ activated: event.target.checked })
     this.props.onChange(event)
   }
 
   render() {
-    const { label, name, className, disabled, title } = this.props
+    const { label, className, disabled, title } = this.props
     const idName = `switch-${Number(String(Math.random() * Date.now()).replace(/\./, ''))}`
     let labelProps = {
       htmlFor: idName,
       className: classNames('doc-input-switch', className)
     }
     let inputProps = {
-      checked: this.state.on,
+      checked: this.state.activated,
       className: 'doc-input-switch__input',
       id: idName,
-      name,
       onChange: this.handleChange,
       type: 'checkbox'
     }
@@ -76,7 +74,7 @@ class InputSwitch extends React.Component {
   }
 }
 
-InputSwitch.propTypes = propTypes
-InputSwitch.defaultProps = defaultProps
+Switch.propTypes = propTypes
+Switch.defaultProps = defaultProps
 
-export default InputSwitch
+export default Switch

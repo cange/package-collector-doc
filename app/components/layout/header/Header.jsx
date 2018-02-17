@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Icon, OverflowMenu } from './../../essentials'
+import {
+  Button,
+  Icon,
+  OverflowMenu,
+  MenuItem
+} from './../../essentials'
 import logoPath from './../../../assets/logo.svg'
 import './styles.scss'
 
@@ -19,6 +24,14 @@ class Header extends React.Component {
 
   handleMenuClick(event) {
     this.props.onMenuClick(event)
+  }
+
+  renderMenuItems(items) {
+    return (
+      <OverflowMenu>
+        {items.map((item, index) => (<MenuItem key={index} {...item} />))}
+      </OverflowMenu>
+    )
   }
 
   render() {
@@ -43,7 +56,7 @@ class Header extends React.Component {
           </div>
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__menu">
-              <OverflowMenu items={menuItems} />
+              {this.renderMenuItems(menuItems)}
             </div>
           </div>
         </div>

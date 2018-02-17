@@ -54,11 +54,11 @@ class Button extends React.Component {
     }
 
     if (title.length) {
-      props = { ...props, title }
+      props.title = title
     }
 
     if (disabled) {
-      props = { ...props, disabled }
+      props.disabled = disabled
     }
 
     return (

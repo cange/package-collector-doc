@@ -1,6 +1,16 @@
+Can consume independent items by just adding them as children into the component.
+
 ```js
 <OverflowMenu>
-  <div>Hello</div>
-  <div>Blubber</div>
+  <div>First item</div>
+  <div>Second item</div>
+</OverflowMenu>
+```
+
+```js
+
+<OverflowMenu>
+  <MenuItem title="First item" />
+  <MenuItem title="Second item" />
 </OverflowMenu>
 ```
