@@ -1,4 +1,4 @@
-@import "./../../../styles/utils";
+@import "./../../../../styles/utils";
 
 @mixin -dimensions($offset-vertical, $height) {
   padding-left: $offset-vertical;
@@ -6,31 +6,29 @@
   min-height: $height;
 }
 
-.doc-menu {
-  list-style: none;
-  margin-top: 0;
-  padding-left: 0;
-}
-
 .doc-menu__item {
-  text-align: left;
-  width: 100%;
+  list-style: none;
 }
-
-.doc-menu__item--action {
-  @include -dimensions(doc-dp(2), doc-dp(6));
-}
-
 .doc-menu__item--divider {
   border-top: 1px doc-color(grey, 200) solid;
   line-height: 0;
   margin-bottom: doc-dp(1);
   margin-top: doc-dp(1);
+}
+
+.doc-menu__action {
+  @include doc-button-behaviour;
+  @include -dimensions(doc-dp(2), doc-dp(6));
+  border-radius: 0;
+  box-sizing: border-box;
+  display: flex;
+  font-size: doc-font-size(button);
+  text-align: left;
   width: 100%;
 }
 
 @include doc-breakpoint(medium, up) {
-  .doc-menu__item--action {
+  .doc-menu__action {
     @include -dimensions(doc-dp(3), doc-dp(4));
   }
 }

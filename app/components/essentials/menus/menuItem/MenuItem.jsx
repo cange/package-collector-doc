@@ -1,9 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from './../button'
-import { Switch } from './../inputs'
-import menuTypes from './types'
+import Button from './../../button'
+import { Switch } from './../../inputs'
 import './styles.scss'
+
+const menuTypes = {
+  /* A button element is a user interface object that sends an action message to a target when clicked. */
+  BUTTON: 'button',
+  /* A switch element displays an ON/OFF button that can be toggled by the user. */
+  SWITCH: 'switch',
+  /* A divider element displays a separation between other menu items. */
+  DIVIDER: 'divider'
+}
+
+/* TODO use definition and names for associated props types
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menuitem
+ */
 
 const propTypes = {
   /** Handler to be called when the user taps/clicks the button */
@@ -12,13 +24,14 @@ const propTypes = {
   label: PropTypes.string,
   /** Text to display for blindness accessibility features */
   title: PropTypes.string,
-  /** Name of the switch value */
-  name: PropTypes.string.isRequired,
-  /** The type of the button. Possible values are */
-  type: PropTypes.string
+  /** The type of the content. */
+  type: PropTypes.oneOf([
+    'button',
+    'switch',
+    'divider'
+  ])
 }
 const defaultProps = {
-  name: '',
   label: '',
   title: '',
   type: menuTypes.BUTTON,
@@ -41,7 +54,7 @@ class MenuItem extends React.Component {
     switch (type) {
       case menuTypes.BUTTON:
         content = (
-          <li className="doc-menu__item doc-menu__item--action" role="menuitem">
+          <li className="doc-menu__item" role="menuitem">
             <Button {...props}>{props.label}</Button>
           </li>
         )
@@ -50,7 +63,7 @@ class MenuItem extends React.Component {
         props.onChange = props.onPress
         delete props.onPress
         content = (
-          <li className="doc-menu__item doc-menu__item--action" role="menuitem">
+          <li className="doc-menu__item" role="menuitem">
             <Switch {...props} />
           </li>
         )
@@ -68,10 +81,10 @@ class MenuItem extends React.Component {
   render() {
     const { label, title, type } = this.props
     let props = {
+      className: 'doc-menu__action',
       onPress: this.handlePress,
       label
     }
-    console.log(type)
 
     if (title.length) {
       props.title = title

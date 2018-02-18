@@ -1,6 +1,7 @@
-export Menu from './Menu'
-export MenuItem from './MenuItem'
-// export {
-//   Menu,
-//   MenuItem
-// }
+import Menu from './menu'
+import MenuItem from './menuItem'
+
+export {
+  Menu,
+  MenuItem
+}

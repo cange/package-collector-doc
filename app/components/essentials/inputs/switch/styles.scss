@@ -78,17 +78,15 @@
   $thumb-off-x: translateX(-$offset);
   $thumb-on-x: translateX($track-width - $thumb-size + $offset);
 
-  @include -dimensions(doc-dp(2), doc-dp(6));
+  // @include -dimensions(doc-dp(2), doc-dp(6));
   align-items: center;
   box-sizing: border-box;
   display: flex;
   font-weight: normal;
   justify-content: space-between;
-  padding-bottom: doc-dp(1);
-  padding-top: doc-dp(1);
   position: relative;
   user-select: none;
-  width: 100%;
+  // width: 100%;
 
   &__track {
     @include -transition-setup(background-color);
@@ -151,6 +149,6 @@
 
 @include doc-breakpoint(medium, up) {
   .doc-input-switch__label {
-    @include -dimensions(doc-dp(3), doc-dp(4));
+    // @include -dimensions(doc-dp(3), doc-dp(4));
   }
 }
