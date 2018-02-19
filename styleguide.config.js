@@ -9,5 +9,6 @@ module.exports = {
       name: 'UI layout',
       components: 'app/components/layout/[A-Z]*.{js,jsx}'
     }
-  ]
+  ],
+  template: 'scripts/templates/index.html'
 }
