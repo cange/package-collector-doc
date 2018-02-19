@@ -1,21 +1,12 @@
-### Types
-
-#### `button`
-A button element is a user interface object that sends an action message to a target when clicked.
+### Example
 
 ```js
-<MenuItem label="Button item" type="button" />
-```
-
-#### `switch`
-A switch element displays an ON/OFF button that can be toggled by the user.
-
-```js
-<MenuItem label="Switch item" type="switch" />
-```
-#### `divider`
-A divider element displays a separation between other menu items.
-
-```js
-<MenuItem type="divider" />
+<Menu>
+  <MenuItem label="Action" />
+  <MenuItem label="Command with event listener" type="command" onPress={(event) => (console.log('command pressed'))} />
+  <MenuItem type="divider" />
+  <MenuItem label="Checkbox" type="checkbox" />
+  <MenuItem label="Checked item" type="checkbox" checked />
+  <MenuItem label="Checkbox with event listener" type="checkbox" onChange={(event) => (console.log('checked:', event.target.checked))} />
+</Menu>
 ```

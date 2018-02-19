@@ -1,22 +1,23 @@
 ### On/off states
 ```js
 <div>
-  <Switch value={true} />
   <Switch />
+  <Switch checked="true" />
 </div>
 ```
 
 ### Disabled state
 ```js
 <div>
-  <Switch disabled={true} value={true}/>
   <Switch disabled={true} />
+  <Switch disabled={true} checked="true" />
 </div>
 ```
 
 ### With label
 ```js
 <div>
-  <Switch label="Labeled switch" value={true} />
+  <Switch label="Labeled switch" />
+  <Switch label="Labeled switch" checked="true" />
 </div>
 ```

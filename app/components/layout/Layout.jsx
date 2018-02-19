@@ -8,16 +8,16 @@ import { Nav } from './nav'
 
 const headerMenuItems = [
   {
-    type: 'switch',
-    value: false,
+    type: 'checkbox',
+    checked: false,
     label: 'Inverted Page Theme',
-    onPress: (event) => {
+    onChange: (event) => {
       console.log('Theme:target', event.target)
     }
   }, {
     type: 'divider'
   }, {
-    type: 'button',
+    type: 'command',
     label: 'Simple item',
     onPress: (event) => {
       console.log('Theme:target', event.target)
@@ -25,17 +25,17 @@ const headerMenuItems = [
   }, {
     type: 'divider'
   }, {
-    type: 'switch',
-    value: true,
+    type: 'checkbox',
+    checked: true,
     label: 'Contrast in Examples',
-    onPress: (event) => {
+    onChange: (event) => {
       console.log('Contrast:target', event.target)
     }
   }, {
-    type: 'switch',
-    value: false,
+    type: 'checkbox',
+    checked: false,
     label: 'Grid in Examples',
-    onPress: (event) => {
+    onChange: (event) => {
       console.log('Example:target', event.target)
     }
   }

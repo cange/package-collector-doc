@@ -10,9 +10,9 @@ const propTypes = {
   disabled: PropTypes.bool,
   /** Text to display next to the switch */
   label: PropTypes.string,
-  /** The value of the switch. If true the switch will be turned on. */
-  value: PropTypes.bool,
-  /** The change event is fired when a change to the element's value is committed by the user. */
+  /** The presence of this Boolean attribute indicates that the control is selected by default, otherwise it is ignored. */
+  checked: PropTypes.bool,
+  /** The change event is fired when a change to the element's checked is committed by the user. */
   onChange: PropTypes.func,
   /** Text to display for blindness accessibility features */
   title: PropTypes.string
@@ -21,7 +21,7 @@ const defaultProps = {
   className: '',
   disabled: false,
   label: '',
-  value: false,
+  checked: false,
   onChange: () => {},
   title: ''
 }
@@ -30,12 +30,12 @@ const defaultProps = {
 class Switch extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { activated: props.value }
+    this.state = { checked: props.checked }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    this.setState({ activated: event.target.checked })
+    this.setState({ checked: event.target.checked })
     this.props.onChange(event)
   }
 
@@ -47,7 +47,7 @@ class Switch extends React.Component {
       className: classNames('doc-input-switch', className)
     }
     let inputProps = {
-      checked: this.state.activated,
+      checked: this.state.checked,
       className: 'doc-input-switch__input',
       id: idName,
       onChange: this.handleChange,

@@ -5,11 +5,8 @@ import { Switch } from './../../inputs'
 import './styles.scss'
 
 const menuTypes = {
-  /* A button element is a user interface object that sends an action message to a target when clicked. */
-  BUTTON: 'button',
-  /* A switch element displays an ON/OFF button that can be toggled by the user. */
-  SWITCH: 'switch',
-  /* A divider element displays a separation between other menu items. */
+  COMMAND: 'command',
+  CHECKBOX: 'checkbox',
   DIVIDER: 'divider'
 }
 
@@ -18,30 +15,46 @@ const menuTypes = {
  */
 
 const propTypes = {
-  /** Handler to be called when the user taps/clicks the button */
+  /** Handler to be called when the user taps/clicks the `button` */
   onPress: PropTypes.func,
-  /** Text to display inside the button */
+  /** Handler to be called when the user taps/clicks the `checkbox`. */
+  onChange: PropTypes.func,
+  /** The name of the command as shown to the user. */
   label: PropTypes.string,
   /** Text to display for blindness accessibility features */
   title: PropTypes.string,
-  /** The type of the content. */
+  /** This attribute indicates the kind of command, and can be one of three values.
+
+  - `command`: A regular command with an associated action. This is the missing value default.
+  - `checkbox`: Represents a command that can be toggled between two different states.
+  - `divider`: Represents a separation between other menu items.
+  */
   type: PropTypes.oneOf([
-    'button',
-    'switch',
+    'command',
+    'checkbox',
     'divider'
-  ])
+  ]),
+  /** Boolean attribute which indicates whether the command is selected. May only be used when the type attribute is `checkbox`. */
+  checked: PropTypes.bool
 }
 const defaultProps = {
+  checked: false,
   label: '',
+  onChange: () => {},
+  onPress: () => {},
   title: '',
-  type: menuTypes.BUTTON,
-  onPress: () => {}
+  type: menuTypes.COMMAND
 }
 
 class MenuItem extends React.Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
     this.handlePress = this.handlePress.bind(this)
+  }
+
+  handleChange(event) {
+    this.props.onChange(event)
   }
 
   handlePress(event) {
@@ -52,16 +65,14 @@ class MenuItem extends React.Component {
     let content
 
     switch (type) {
-      case menuTypes.BUTTON:
+      case menuTypes.COMMAND:
         content = (
           <li className="doc-menu__item" role="menuitem">
             <Button {...props}>{props.label}</Button>
           </li>
         )
         break
-      case menuTypes.SWITCH:
-        props.onChange = props.onPress
-        delete props.onPress
+      case menuTypes.CHECKBOX:
         content = (
           <li className="doc-menu__item" role="menuitem">
             <Switch {...props} />
@@ -79,10 +90,12 @@ class MenuItem extends React.Component {
   }
 
   render() {
-    const { label, title, type } = this.props
+    const { label, title, type, checked } = this.props
     let props = {
       className: 'doc-menu__action',
       onPress: this.handlePress,
+      onChange: this.handleChange,
+      checked,
       label
     }
 

@@ -30,22 +30,22 @@ describe('<Switch />', () => {
     })
   })
 
-  describe('when "on" is given', () => {
+  describe('when "checked" is given', () => {
     beforeEach(() => {
-      wrapper = shallow(<Switch value={true} {...minimalProps} />)
+      wrapper = shallow(<Switch checked {...minimalProps} />)
     })
 
     it('renders a checked attribute', () => {
-      expect(wrapper.find('input').prop('checked')).toBeTruthy()
+      expect(wrapper.find('input').props().checked).toBeTruthy()
     })
 
     describe('negative state', () => {
       beforeEach(() => {
-        wrapper = shallow(<Switch value={false} {...minimalProps} />)
+        wrapper = shallow(<Switch checked={false} {...minimalProps} />)
       })
 
       it('does not render a checked attribute', () => {
-        expect(wrapper.find('input').prop('checked')).toBeFalsy()
+        expect(wrapper.find('input').props().checked).toBeFalsy()
       })
     })
   })

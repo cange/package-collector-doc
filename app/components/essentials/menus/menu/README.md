@@ -1,7 +1,10 @@
+### Example
+
 ```js
 <Menu>
-  <MenuItem type="button" label="Button item" />
+  <MenuItem label="Action" />
+  <MenuItem label="Another action" />
   <MenuItem type="divider" />
-  <MenuItem type="switch" label="Switch item" />
+  <MenuItem label="Separated action" />
 </Menu>
 ```

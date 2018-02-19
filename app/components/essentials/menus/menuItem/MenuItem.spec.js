@@ -20,11 +20,11 @@ describe('<MenuItem />', () => {
     expect(wrapper.prop('disabled')).toBe(undefined)
   })
 
-  describe('when item type "button" is given', () => {
+  describe('when item type "command" is given', () => {
     const onPressMock = jest.fn()
 
     beforeEach(() => {
-      wrapper = mount(<MenuItem {...defaultProps} type="button" title="Tooltip title" onPress={onPressMock} />)
+      wrapper = mount(<MenuItem {...defaultProps} type="command" title="Tooltip title" onPress={onPressMock} />)
     })
 
     it('renders a button element within the item', () => {
@@ -36,28 +36,38 @@ describe('<MenuItem />', () => {
     it('renders title onto button', () => {
       expect(wrapper.find('button').prop('title')).toBe('Tooltip title')
     })
-    it('buttons onPress event', () => {
+    it('bubbles onPress event', () => {
       wrapper.find('button').simulate('click')
       expect(onPressMock).toHaveBeenCalled()
     })
   })
 
-  describe('when item type "switch" is given', () => {
+  describe('when item type "checkbox" is given', () => {
     const onChangeMock = jest.fn()
 
     beforeEach(() => {
-      wrapper = mount(<MenuItem {...defaultProps} type="switch" onPress={onChangeMock} />)
+      wrapper = mount(<MenuItem {...defaultProps} type="checkbox" onChange={onChangeMock} />)
     })
 
-    it('renders a switch element within the item', () => {
+    it('renders a checkbox element within the item', () => {
       expect(wrapper.find('[role="menuitem"]').find('Switch').exists()).toBeTruthy()
     })
-    it('renders a label into the switch element', () => {
+    it('renders a label into the checkbox element', () => {
       expect(wrapper.find('Switch').text()).toBe('Display label')
     })
-    it('transforms onPress as onChange event', () => {
+    it('bubbles onChange event', () => {
       wrapper.find('input').simulate('change')
       expect(onChangeMock).toHaveBeenCalled()
+    })
+
+    describe('when "checked" attribute is given', () => {
+      beforeEach(() => {
+        wrapper = mount(<MenuItem {...defaultProps} type="checkbox" checked />)
+      })
+
+      it('renders an checked checkbox item', () => {
+        expect(wrapper.find('input[checked]').exists()).toBeTruthy()
+      })
     })
   })
 
