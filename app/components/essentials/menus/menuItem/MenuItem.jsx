@@ -4,15 +4,11 @@ import Button from './../../button'
 import { Switch } from './../../inputs'
 import './styles.scss'
 
-const menuTypes = {
+const itemTypes = {
   COMMAND: 'command',
   CHECKBOX: 'checkbox',
   DIVIDER: 'divider'
 }
-
-/* TODO use definition and names for associated props types
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menuitem
- */
 
 const propTypes = {
   /** Handler to be called when the user taps/clicks the `button` */
@@ -29,10 +25,7 @@ const propTypes = {
   - `checkbox`: Represents a command that can be toggled between two different states.
   - `divider`: Represents a separation between other menu items.
   */
-  type: PropTypes.oneOf([
-    'command',
-    'checkbox',
-    'divider'
+  type: PropTypes.oneOf([itemTypes.COMMAND, itemTypes.CHECKBOX, itemTypes.DIVIDER
   ]),
   /** Boolean attribute which indicates whether the command is selected. May only be used when the type attribute is `checkbox`. */
   checked: PropTypes.bool
@@ -43,7 +36,7 @@ const defaultProps = {
   onChange: () => {},
   onPress: () => {},
   title: '',
-  type: menuTypes.COMMAND
+  type: itemTypes.COMMAND
 }
 
 class MenuItem extends React.Component {
@@ -65,14 +58,14 @@ class MenuItem extends React.Component {
     let content
 
     switch (type) {
-      case menuTypes.COMMAND:
+      case itemTypes.COMMAND:
         content = (
           <li className="doc-menu__item" role="menuitem">
             <Button {...props}>{props.label}</Button>
           </li>
         )
         break
-      case menuTypes.CHECKBOX:
+      case itemTypes.CHECKBOX:
         content = (
           <li className="doc-menu__item" role="menuitem">
             <Switch {...props} />

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import {
   Button,
   Icon,
-  OverflowMenu,
-  MenuItem
+  Menus
 } from './../../essentials'
 import logoPath from './../../../assets/logo.svg'
 import './styles.scss'
@@ -28,9 +27,9 @@ class Header extends React.Component {
 
   renderMenuItems(items) {
     return (
-      <OverflowMenu>
-        {items.map((item, index) => (<MenuItem key={index} {...item} />))}
-      </OverflowMenu>
+      <Menus.OverflowMenu>
+        {items.map((item, index) => (<Menus.MenuItem key={index} {...item} />))}
+      </Menus.OverflowMenu>
     )
   }
 

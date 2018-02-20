@@ -1,7 +1,9 @@
 import Menu from './menu'
 import MenuItem from './menuItem'
+import OverflowMenu from './overflowMenu'
 
-export {
+export default {
   Menu,
-  MenuItem
+  MenuItem,
+  OverflowMenu
 }
