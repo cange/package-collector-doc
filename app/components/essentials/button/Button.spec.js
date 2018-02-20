@@ -13,6 +13,11 @@ describe('<Button />', () => {
     expect(wrapper.prop('type')).toBe('button')
   })
 
+  it('renders minimal markup', () => {
+    expect(wrapper.prop('title')).toBe(undefined)
+    expect(wrapper.prop('disabled')).toBe(undefined)
+  })
+
   describe('when a button type is given', () => {
     beforeEach(() => {
       wrapper = shallow(<Button type="submit" />)
@@ -39,16 +44,36 @@ describe('<Button />', () => {
     })
   })
 
+  describe('when a "title" attribute is given', () => {
+    beforeEach(() => {
+      wrapper = shallow(<Button title="A button"></Button>)
+    })
+
+    it('renders button with title attribute', () => {
+      expect(wrapper.find('button').prop('title')).toBe('A button')
+    })
+  })
+
+  describe('when given "disabled" attribute is "true"', () => {
+    beforeEach(() => {
+      wrapper = shallow(<Button disabled={true}></Button>)
+    })
+
+    it('renders button with disabled attribute', () => {
+      expect(wrapper.find('button').prop('disabled')).toBeTruthy()
+    })
+  })
+
   describe('when button has been clicked', () => {
-    const onClickMock = jest.fn()
+    const onPressMock = jest.fn()
 
     beforeEach(() => {
-      wrapper = mount(<Button onClick={onClickMock} />)
+      wrapper = mount(<Button onPress={onPressMock} />)
       wrapper.simulate('click')
     })
 
-    it('bubbles onClick event', () => {
-      expect(onClickMock).toHaveBeenCalled()
+    it('bubbles onPress event', () => {
+      expect(onPressMock).toHaveBeenCalled()
     })
   })
 })

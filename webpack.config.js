@@ -1,8 +1,8 @@
-import { resolve } from 'path'
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].css',
@@ -10,11 +10,11 @@ const extractSass = new ExtractTextPlugin({
   disable: process.env.NODE_ENV === 'development'
 })
 const config = {
-  dist: resolve(__dirname, 'dist'),
-  app: resolve(__dirname, 'app')
+  dist: path.resolve(__dirname, 'dist'),
+  app: path.resolve(__dirname, 'app')
 }
 
-export default {
+module.exports = {
   entry: {
     application: './app/application.js',
     vendor: [
@@ -32,7 +32,9 @@ export default {
     contentBase: config.dist,
     compress: false,
     hot: true,
-    host: '127.0.0.1'
+    stats: 'errors-only',
+    host: '192.168.178.29'
+    // host: '127.0.0.1'
   },
   module: {
     rules: [
@@ -82,7 +84,7 @@ export default {
     new HtmlWebpackPlugin({
       path: config.dist,
       filename: 'index.html',
-      template: `${config.app}/template.html`,
+      template: config.app + '/template.html',
       inject: true
     })
   ]

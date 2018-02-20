@@ -3,7 +3,8 @@
     "env"
   ],
   "plugins": [
-    "transform-react-jsx",
-    "transform-export-extensions"
+    "transform-export-extensions",
+    "transform-object-rest-spread",
+    "transform-react-jsx"
   ]
 }
