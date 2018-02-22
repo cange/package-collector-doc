@@ -81,10 +81,9 @@ $icon-size: 24px;
       padding-left: $offset * 2;
       padding-right: $offset * 2;
     }
-    &__column {
-      &:first-child {
-        flex-basis: doc-dp(9);
-      }
+
+    &__column:first-child {
+      flex-basis: doc-dp(9);
     }
   }
 }

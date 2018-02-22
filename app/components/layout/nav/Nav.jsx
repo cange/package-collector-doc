@@ -24,16 +24,58 @@ ListItem.propTypes = {
   title: PropTypes.string.isRequired
 }
 
-export default class Nav extends React.Component {
+const propTypes = {
+  icon: PropTypes.string,
+  items: PropTypes.array,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  title: PropTypes.string
+}
+const propDefaults = {
+  items: {},
+  onClose: () => {},
+  open: false
+}
+
+class Nav extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isOpen: props.open
+    }
+    this.handlePressOutside = this.handlePressOutside.bind(this)
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ isOpen: props.open })
+  }
+
+  componentDidMount() {
+    document.addEventListener('touchend', this.handlePressOutside, true)
+    document.addEventListener('click', this.handlePressOutside, true)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('touchend', this.handlePressOutside, true)
+    document.removeEventListener('click', this.handlePressOutside, true)
+  }
+
+  handlePressOutside(event) {
+    if (!this.wrapper.contains(event.target) && this.state.isOpen) {
+      this.setState({ isOpen: false })
+      this.props.onClose()
+    }
+  }
+
   render() {
-    const listItems = this.props.items.map((item) => (<ListItem key={item.title} {...item} />))
+    const listItems = this.props.items.map((item, index) => (<ListItem key={index} {...item} />))
     const wrapperClasses = classNames(
       'doc-nav',
-      { 'is-open': this.props.open }
+      { 'is-open': this.state.isOpen }
     )
 
     return (
-      <div className={wrapperClasses}>
+      <div className={wrapperClasses} ref={(ref) => { this.wrapper = ref }}>
         <div className="doc-nav__drawer">
           <dl className="doc-nav__list">
             {listItems}
@@ -44,14 +86,7 @@ export default class Nav extends React.Component {
   }
 }
 
-Nav.propTypes = {
-  open: PropTypes.bool,
-  items: PropTypes.array,
-  icon: PropTypes.string,
-  title: PropTypes.string
-}
+Nav.propTypes = propTypes
+Nav.propDefaults = propDefaults
 
-Nav.propDefaults = {
-  open: true,
-  items: {}
-}
+export default Nav

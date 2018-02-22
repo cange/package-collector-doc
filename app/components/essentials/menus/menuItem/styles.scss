@@ -10,7 +10,7 @@
   list-style: none;
 }
 .doc-menu__item--divider {
-  border-top: 1px doc-color(grey, 200) solid;
+  border-top: doc-divider(light);
   line-height: 0;
   margin-bottom: doc-dp(1);
   margin-top: doc-dp(1);

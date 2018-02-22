@@ -4,23 +4,26 @@ $nav-width: doc-dp(30);
 
 .doc-layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
 
   &__body {
     display: flex;
-    flex: 1 0 auto;
     flex-direction: column;
+    justify-content: space-between;
     position: relative;
+    width: 100%;
   }
 
   &__main {
     background-color: doc-color(indigo);
-    flex-grow: 1;
+    height: 100%
   }
 
   &__nav {
-    order: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   /*
@@ -32,18 +35,5 @@ $nav-width: doc-dp(30);
 
   &__footer {
     flex: none;
-  }
-}
-
-@include doc-breakpoint(small, up) {
-  .doc-layout {
-    &__nav {
-      // flex-basis: $nav-width;
-    }
-
-    &__body {
-      flex-direction: row;
-      flex-grow: 1;
-    }
   }
 }

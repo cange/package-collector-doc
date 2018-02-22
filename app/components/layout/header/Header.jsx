@@ -9,26 +9,18 @@ import logoPath from './../../../assets/logo.svg'
 import './styles.scss'
 
 const propTypes = {
-  onMenuClick: PropTypes.func,
+  menuItems: PropTypes.array,
+  onPressMainButton: PropTypes.func,
   title: PropTypes.string,
   version: PropTypes.string
 }
-
 const defaultProps = {
+  onPressMainButton: () => {},
   title: 'Title',
   version: 'Version'
 }
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleMenuClick = this.handleMenuClick.bind(this)
-  }
-
-  handleMenuClick(event) {
-    this.props.onMenuClick(event)
-  }
-
   renderMenuItems(items) {
     return (
       <Menus.OverflowMenu>
@@ -44,7 +36,7 @@ class Header extends React.Component {
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
         <div className="doc-toolbar__outer">
           <div className="doc-toolbar__column">
-            <Button className="doc-button--icon" onClick={this.handleMenuClick}>
+            <Button className="doc-button--icon" onPress={(event) => this.props.onPressMainButton(event)}>
               <Icon name="menu-handle" />
             </Button>
           </div>
@@ -69,6 +61,6 @@ class Header extends React.Component {
 }
 
 Header.propTypes = propTypes
-Header.defaultTypes = defaultTypes
+Header.defaultProps = defaultProps
 
 export default Header

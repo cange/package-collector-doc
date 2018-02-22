@@ -5,7 +5,8 @@
 
   &__content {
     background-color: doc-color(yellow);
+    max-width: doc-dp(146);
+    min-width: doc-dp(40);
     overflow: auto;
-    width: 1170px;
   }
 }
