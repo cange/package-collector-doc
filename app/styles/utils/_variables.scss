@@ -6,10 +6,3 @@
   $base: 8px;
   @return $base * $size;
 }
-
-/// @param {Keyword} $name
-/// @param {Keyword} $prefix [doc]
-/// @return {Keyword}
-@function doc-namespace($name, $prefix: doc) {
-  @return #{$prefix}-#{$name};
-}

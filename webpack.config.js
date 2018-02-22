@@ -1,8 +1,8 @@
-import { join, resolve } from 'path'
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].css',
@@ -10,11 +10,11 @@ const extractSass = new ExtractTextPlugin({
   disable: process.env.NODE_ENV === 'development'
 })
 const config = {
-  dist: resolve(__dirname, 'dist'),
-  app: resolve(__dirname, 'app')
+  dist: path.resolve(__dirname, 'dist'),
+  app: path.resolve(__dirname, 'app')
 }
 
-export default {
+module.exports = {
   entry: {
     application: './app/application.js',
     vendor: [
@@ -30,8 +30,11 @@ export default {
   devtool: 'source-map', // any 'source-map'-like devtool is possible
   devServer: {
     contentBase: config.dist,
-    compress: true,
-    hot: true
+    compress: false,
+    hot: true,
+    stats: 'errors-only',
+    host: '192.168.178.29'
+    // host: '127.0.0.1'
   },
   module: {
     rules: [
@@ -41,26 +44,21 @@ export default {
         include: [
           config.app
         ],
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
-        test: /\.jsx?$/,
         loader: 'eslint-loader',
+        test: /\.jsx?$/,
         options: {
           fix: true
         },
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
         use: extractSass.extract({
-          use: [{
-            loader: 'css-loader'
-          }, {
-            loader: 'sass-loader'
-          }],
-          // use style-loader in development
-          fallback: 'style-loader'
+          fallback: 'style-loader',
+          use: 'css-loader!postcss-loader!sass-loader'
         })
       },
       {
@@ -72,12 +70,12 @@ export default {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss']
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.js'
+      filename: '[name].js'
     }),
     extractSass,
     new CleanWebpackPlugin(['dist']),
@@ -86,7 +84,7 @@ export default {
     new HtmlWebpackPlugin({
       path: config.dist,
       filename: 'index.html',
-      template: `${config.app}/template.html`,
+      template: config.app + '/template.html',
       inject: true
     })
   ]

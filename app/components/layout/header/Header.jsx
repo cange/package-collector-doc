@@ -1,11 +1,25 @@
-import './styles'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon } from './../../icons'
-import { Button } from './../../buttons'
+import {
+  Button,
+  Icon,
+  Menus
+} from './../../essentials'
 import logoPath from './../../../assets/logo.svg'
+import './styles.scss'
 
-export default class Header extends React.Component {
+const propTypes = {
+  onMenuClick: PropTypes.func,
+  title: PropTypes.string,
+  version: PropTypes.string
+}
+
+const defaultProps = {
+  title: 'Title',
+  version: 'Version'
+}
+
+class Header extends React.Component {
   constructor(props) {
     super(props)
     this.handleMenuClick = this.handleMenuClick.bind(this)
@@ -15,8 +29,16 @@ export default class Header extends React.Component {
     this.props.onMenuClick(event)
   }
 
+  renderMenuItems(items) {
+    return (
+      <Menus.OverflowMenu>
+        {items.map((item, index) => (<Menus.MenuItem key={index} {...item} />))}
+      </Menus.OverflowMenu>
+    )
+  }
+
   render() {
-    const { title, version } = this.props
+    const { title, version, menuItems } = this.props
 
     return (
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
@@ -37,31 +59,7 @@ export default class Header extends React.Component {
           </div>
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__menu">
-              <nav className="overflow-menu" role="navigation">
-                <button className="doc-toolbar__button doc-overflow-menu__button" type="button" title="Tools">
-                  <Icon name="more-vert-handle"/>
-                </button>
-                <ul className="menu__list#doc-tools-menu" role="menu" hidden>
-                  <li className="menu__item" role="menuitem">
-                    <div className="toggle-button">
-                      <input id="doc-invert-toggle" type="checkbox" name="page-theme-inverted"/>
-                      <label htmlFor="doc-invert-toggle">Use Inverted Page Theme</label>
-                    </div>
-                  </li>
-                  <li className="menu__item" role="menuitem">
-                    <div className="toggle-button">
-                      <input id="doc-contrast-toggle" type="checkbox" name="doc-page-theme-contrast-dark"/>
-                      <label htmlFor="doc-contrast-toggle">Increase Contrast in Examples</label>
-                    </div>
-                  </li>
-                  <li className="menu__item" role="menuitem">
-                    <div className="toggle-button">
-                      <input id="doc-grid-toggle" type="checkbox" name="doc-show-example-grid"/>
-                      <label htmlFor="doc-grid-toggle"> Show Grid in Examples</label>
-                    </div>
-                  </li>
-                </ul>
-              </nav>
+              {this.renderMenuItems(menuItems)}
             </div>
           </div>
         </div>
@@ -70,13 +68,7 @@ export default class Header extends React.Component {
   }
 }
 
-Header.propTypes = {
-  onMenuClick: PropTypes.func,
-  title: PropTypes.string,
-  version: PropTypes.string
-}
+Header.propTypes = propTypes
+Header.defaultTypes = defaultTypes
 
-Header.defaultProps = {
-  title: 'Title',
-  version: 'Version'
-}
+export default Header

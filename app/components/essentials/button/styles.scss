@@ -1,13 +1,13 @@
-@import "./../../styles/utils";
+@import "./../../../styles/utils";
 
-.#{doc-namespace(button)} {
+.doc-button {
   @include doc-button-behaviour;
   background-color: transparent;
   border-radius: .2em;
   border: 0;
   box-sizing: content-box;
 
-  .#{doc-namespace(icon)} {
+  .doc-icon {
     transform: inherit;
   }
 

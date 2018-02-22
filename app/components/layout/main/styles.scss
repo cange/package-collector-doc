@@ -1,14 +1,11 @@
 @import "./../../../styles/utils";
 
-.#{doc-namespace(main)} {
-  display: flex;
-  justify-content: center;
+.doc-main {
   margin: doc-dp(2);
 
   &__content {
     background-color: doc-color(yellow);
     overflow: auto;
     width: 1170px;
-
   }
 }

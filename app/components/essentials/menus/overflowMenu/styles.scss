@@ -1,0 +1,73 @@
+@import "./../../../../styles/utils";
+
+$shadow: doc-shadow(4);
+$speed: doc-speed(base) / 2;
+$width-step-mobile: doc-dp(7);
+$width-step-desktop: doc-dp(8);
+
+@mixin -hide-list {
+  opacity: 0;
+  transform: translateY(doc-dp(-1));
+  pointer-events: none;
+}
+
+@mixin -active-list {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+};
+
+.doc-overflow-menu {
+  position: relative;
+
+  &__toggle {
+    padding-left: doc-dp(1);
+    padding-right: doc-dp(1);
+  }
+
+  .doc-menu {
+    @include -hide-list;
+    background-color: doc-color(white);
+    border-radius: doc-dp(.25);
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    min-width: $width-step-mobile * 4;
+    padding-bottom: doc-dp(1);
+    padding-top: doc-dp(1);
+    position: absolute;
+    right: 0;
+    top: doc-dp(.5);
+    transform-origin: top center;
+    transition-duration: $speed;
+    transition-property: opacity transform;
+    transition-timing-function: doc-ease(out);
+    will-change: opacity transform;
+  }
+
+  &__item {
+    align-items: center;
+    display: flex;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &.is-open {
+    .doc-overflow-menu__toggle {
+      background-color: rgba(doc-color(grey), .1);
+    }
+    .doc-menu {
+      @include -active-list;
+    }
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  .doc-overflow-menu {
+    &__list {
+      min-width: $width-step-desktop * 4;
+    }
+  }
+}

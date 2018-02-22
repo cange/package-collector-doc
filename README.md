@@ -67,7 +67,8 @@ Will run the linter for the whole codebase
 * [x] enable ES2015+
 * [x] set up a JavaScript framework
 * [x] set up a test runner
-* [ ] set up linter for JavaScript
+* [x] set up CSS autoprefixer
+* [x] set up linter for JavaScript
 * [ ] set up linter for SCSS
 * [ ] set up Sass documentation generator
 * [ ] set up an entrypoint for generic content
