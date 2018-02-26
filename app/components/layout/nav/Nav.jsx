@@ -2,26 +2,12 @@ import './styles.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Icon } from './../../essentials'
+import NavAction from './NavAction'
+import NavSubheader from './NavSubheader'
 
-const ListItem = (props) => {
-  return (
-    <dt className="doc-nav__item">
-      <a className="doc-nav__action" href="#">
-        <div className="doc-nav__icon">
-          <Icon name={props.icon} />
-        </div>
-        <div className="doc-nav__title">
-          {props.title}
-        </div>
-      </a>
-    </dt>
-  )
-}
-
-ListItem.propTypes = {
-  icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+const navTypes = {
+  ACTION: 'action',
+  SUBHEADER: 'subheader'
 }
 
 const propTypes = {
@@ -67,8 +53,17 @@ class Nav extends React.Component {
     }
   }
 
+  renderItems(items) {
+    return items.map((item, index) => {
+      if (item.type === navTypes.ACTION) {
+        return (<NavAction key={index} {...item} />)
+      } else if (item.type === navTypes.SUBHEADER) {
+        return (<NavSubheader key={index} {...item} />)
+      }
+    })
+  }
+
   render() {
-    const listItems = this.props.items.map((item, index) => (<ListItem key={index} {...item} />))
     const wrapperClasses = classNames(
       'doc-nav',
       { 'is-open': this.state.isOpen }
@@ -78,7 +73,7 @@ class Nav extends React.Component {
       <div className={wrapperClasses} ref={(ref) => { this.wrapper = ref }}>
         <div className="doc-nav__drawer">
           <dl className="doc-nav__list">
-            {listItems}
+            {this.renderItems(this.props.items)}
           </dl>
         </div>
       </div>

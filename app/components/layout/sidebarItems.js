@@ -1,69 +1,54 @@
 export default [
   {
+    title: 'Subheader',
+    type: 'subheader'
+  }, {
     title: 'Atoms',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
     title: 'Molecules',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
+  }, {
+    title: 'Another label',
+    type: 'subheader'
   }, {
     title: 'Organisms',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
     title: 'Molecules',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
     title: 'Organisms',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
     title: 'Molecules',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
     title: 'Organisms',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
     title: 'Molecules',
-    icon: 'inbox'
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }, {
-    title: 'Organisms',
-    icon: 'inbox'
-  }, {
-    title: 'Molecules',
-    icon: 'inbox'
-  }, {
-    title: 'Organisms',
-    icon: 'inbox'
-  }, {
-    title: 'Molecules',
-    icon: 'inbox'
-  }, {
-    title: 'Organisms of atomic design',
-    icon: 'inbox'
-  }, {
-    title: 'Molecules',
-    icon: 'inbox'
-  }, {
-    title: 'Organisms',
-    icon: 'inbox'
-  }, {
-    title: 'Molecules',
-    icon: 'inbox'
-  }, {
-    title: 'Organisms',
-    icon: 'inbox'
-  }, {
-    title: 'Molecules',
-    icon: 'inbox'
-  }, {
-    title: 'Organisms',
-    icon: 'inbox'
-  }, {
-    title: 'Molecules',
-    icon: 'inbox'
-  }, {
-    title: 'Penultimate item',
-    icon: 'inbox'
-  }, {
-    title: 'Last item',
-    icon: 'inbox'
+    title: 'Blubber',
+    type: 'action',
+    icon: 'inbox',
+    onPress: () => {}
   }
 ]
