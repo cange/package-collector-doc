@@ -1,7 +1,6 @@
-import './styles/base.scss'
-
 import React from 'react'
 import ReactDom from 'react-dom'
-import { Layout } from './components/layout'
+import { Templates } from './components'
+import './styles/base.scss'
 
-ReactDom.render(<Layout nav="my nav" />, document.getElementById('mount'))
+ReactDom.render(<Templates.Start nav="my nav" />, document.getElementById('mount'))
