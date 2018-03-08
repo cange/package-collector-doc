@@ -1,18 +1,18 @@
 ### Example
 
 ```js
-<Drawer open={false} onClose={() => {}} items={[
+<ListControl items={[
   {
     title: 'Inbox',
     icon: 'inbox',
-    onPress: () => { console.log('Drawer action: Inbox') }
+    onPress: () => { console.log('ListControl action: Inbox') }
   }, {
     title: 'Subheader',
     type: 'subheader'
   }, {
     title: 'Drafts',
     icon: 'drafts',
-    onPress: () => { console.log('Drawer action: Drafts') }
+    onPress: () => { console.log('ListControl action: Drafts') }
   }
 ]} />
 ```

@@ -7,14 +7,14 @@ $width-step-desktop: doc-dp(8);
 
 @mixin -hide-list {
   opacity: 0;
-  transform: translateY(doc-dp(-1));
+  transform: translateX(doc-dp(1));
   pointer-events: none;
 }
 
 @mixin -active-list {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateX(0);
 };
 
 .doc-overflow-menu {
@@ -39,17 +39,13 @@ $width-step-desktop: doc-dp(8);
     padding-top: doc-dp(1);
     position: absolute;
     right: 0;
-    top: doc-dp(.5);
+    top: 0;
     transform-origin: top center;
   }
 
   &__item {
     align-items: center;
     display: flex;
-  }
-
-  &__container {
-    position: relative;
   }
 
   &.is-open {
@@ -60,6 +56,16 @@ $width-step-desktop: doc-dp(8);
       @include -active-list;
       transition-duration: doc-speed(enter);
     }
+  }
+}
+
+.doc-overflow-menu--origin-bottom {
+  .doc-overflow-menu__container {
+    position: relative;
+  }
+
+  .doc-menu {
+    top: doc-dp(.5);
   }
 }
 

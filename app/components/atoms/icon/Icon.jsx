@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import iconsPath from './../../../assets/icons.svg'
 
+/** This Component helps to load and display icons. */
 const Icon = ({ name }) => {
   const xmlns = 'http://www.w3.org/2000/svg'
   const props = {

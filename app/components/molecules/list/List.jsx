@@ -15,16 +15,27 @@ const propTypes = {
     type: PropTypes.oneOf([navTypes.ACTION, navTypes.SUBHEADER])
   }))
 }
-const propDefaults = {
-  items: []
-}
-
-class Nav extends React.Component {
+/**
+ * Lists present multiple line items vertically as a single continuous element.
+ * @link https://material.io/guidelines/components/lists.html
+ */
+class List extends React.Component {
   renderIcon(name) {
     return (
-      <div className="doc-nav__icon">
+      <div className="doc-list__icon">
         <Atoms.Icon name={name} />
       </div>
+    )
+  }
+
+  renderActionLine(item) {
+    return (
+      <Atoms.Button className="doc-list__action" onPress={(event) => item.onPress(event)} >
+        {item.icon && this.renderIcon(item.icon)}
+        <div className="doc-list__title">
+          {item.title}
+        </div>
+      </Atoms.Button>
     )
   }
 
@@ -32,19 +43,14 @@ class Nav extends React.Component {
     return items.map((item, index) => {
       if (item.type === navTypes.SUBHEADER) {
         return (
-          <dt key={index} className="doc-nav__subheader">
+          <dt key={index} className="doc-list__item doc-list__item--subheader">
             {item.title}
           </dt>
         )
       } else {
         return (
-          <dd key={index} className="doc-nav__item">
-            <Atoms.Button className="doc-nav__action" onPress={(event) => item.onPress(event)} >
-              {item.icon && this.renderIcon(item.icon)}
-              <div className="doc-nav__title">
-                {item.title}
-              </div>
-            </Atoms.Button>
+          <dd key={index} className="doc-list__item">
+            {this.renderActionLine(item)}
           </dd>
         )
       }
@@ -53,14 +59,13 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <dl className="doc-nav" role="navigation">
+      <dl className="doc-list" role="navigation">
         {this.renderItems(this.props.items)}
       </dl>
     )
   }
 }
 
-Nav.propTypes = propTypes
-Nav.propDefaults = propDefaults
+List.propTypes = propTypes
 
-export default Nav
+export default List

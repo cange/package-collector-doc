@@ -1,45 +1,34 @@
 export default [
   {
+    title: 'Inbox',
+    icon: 'inbox',
+    onPress: () => { console.log('Inbox') }
+  }, {
+    title: 'Starred',
+    icon: 'star',
+    onPress: () => { console.log('Starred') }
+  }, {
+    title: 'Sent mail',
+    icon: 'send',
+    onPress: () => { console.log('Sent mail') }
+  }, {
+    title: 'Drafts',
+    icon: 'drafts',
+    onPress: () => { console.log('Drafts') }
+  }, {
     title: 'Subheader',
     type: 'subheader'
   }, {
-    title: 'Atoms',
-    icon: 'inbox',
-    onPress: () => { console.log('Atoms') }
+    title: 'All mails',
+    icon: 'mail',
+    onPress: () => { console.log('All mails') }
   }, {
-    title: 'Molecules',
-    icon: 'inbox',
-    onPress: () => { console.log('Molecules') }
+    title: 'Trash',
+    icon: 'delete',
+    onPress: () => { console.log('Trash') }
   }, {
-    title: 'Another label',
-    type: 'subheader'
-  }, {
-    title: 'Organisms',
-    icon: 'inbox',
-    onPress: () => { console.log('Organisms') }
-  }, {
-    title: 'Molecules',
-    icon: 'inbox',
-    onPress: () => { console.log('Molecules') }
-  }, {
-    title: 'Organisms',
-    icon: 'inbox',
-    onPress: () => { console.log('Organisms') }
-  }, {
-    title: 'Whatever',
-    icon: 'inbox',
-    onPress: () => { console.log('Whatever') }
-  }, {
-    title: 'Organisms',
-    icon: 'inbox',
-    onPress: () => { console.log('Organisms') }
-  }, {
-    title: 'Molecules',
-    icon: 'inbox',
-    onPress: () => { console.log('Molecules') }
-  }, {
-    title: 'Blubber',
-    icon: 'inbox',
-    onPress: () => { console.log('Blubber') }
+    title: 'Spam',
+    icon: 'report',
+    onPress: () => { console.log('Spam') }
   }
 ]

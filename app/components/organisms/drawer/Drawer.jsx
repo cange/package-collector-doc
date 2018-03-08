@@ -14,7 +14,7 @@ const propDefaults = {
   onClose: () => {},
   open: false
 }
-
+/** The navigation drawer slides in from the left and contains the navigation destinations for your app */
 class Drawer extends React.Component {
   constructor(props) {
     super(props)
@@ -54,7 +54,7 @@ class Drawer extends React.Component {
     return (
       <div className={wrapperClasses} ref={(ref) => { this.wrapper = ref }}>
         <div className="doc-drawer__container">
-          <Molecules.Nav items={this.props.items} />
+          <Molecules.List items={this.props.items} />
         </div>
       </div>
     )
