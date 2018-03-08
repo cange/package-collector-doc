@@ -28,6 +28,7 @@ $width-step-desktop: doc-dp(8);
 
   .doc-menu {
     @include -hide-list;
+    @include doc-transition-setup(opacity transform, $speed: leave, $easing: out);
     background-color: doc-color(white);
     border-radius: doc-dp(.25);
     box-shadow: $shadow;
@@ -40,10 +41,6 @@ $width-step-desktop: doc-dp(8);
     right: 0;
     top: doc-dp(.5);
     transform-origin: top center;
-    transition-duration: $speed;
-    transition-property: opacity transform;
-    transition-timing-function: doc-ease(out);
-    will-change: opacity transform;
   }
 
   &__item {
@@ -61,14 +58,25 @@ $width-step-desktop: doc-dp(8);
     }
     .doc-menu {
       @include -active-list;
+      transition-duration: doc-speed(enter);
     }
   }
 }
 
 @include doc-breakpoint(medium, up) {
   .doc-overflow-menu {
+    .doc-menu {
+      transition-duration: doc-speed(leave, $screen: desktop);
+    }
+
     &__list {
       min-width: $width-step-desktop * 4;
+    }
+
+    &.is-open {
+      .doc-menu {
+        transition-duration: doc-speed(enter, $screen: desktop);
+      }
     }
   }
 }

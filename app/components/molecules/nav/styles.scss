@@ -1,0 +1,64 @@
+@import "./../../../styles/utils";
+
+$offset-top-mobile: doc-dp(6);
+$offset-top-desktop: doc-dp(7);
+$width-desktop: doc-dp(40);
+$item-size: doc-dp(6);
+$icon-size: doc-dp(3);
+
+.doc-nav {
+  margin-top: doc-dp(1);
+  padding-top: doc-dp(1);
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: $offset-top-mobile + doc-dp(3);
+
+  &__subheader {
+    padding-left: doc-dp(2);
+    padding-right: doc-dp(2);
+    min-height: doc-dp(6) ;
+    font: doc-font-style(body1);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    color: doc-color(grey);
+  }
+
+  &__item {
+    margin-inline-start: 0;
+  }
+
+  &__item + &__subheader {
+    border-top: doc-divider(light);
+  }
+
+  &__action {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: $item-size;
+    padding-left: doc-dp(2);
+    padding-right: doc-dp(2);
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background-color: doc-color(grey, 100);
+    }
+  }
+
+  &__icon {
+    box-sizing: border-box;
+    flex-basis: doc-dp(9);
+    font-size: $icon-size;
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  .doc-nav {
+    margin-bottom: $offset-top-desktop + doc-dp(3);
+  }
+}

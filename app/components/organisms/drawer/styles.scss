@@ -1,0 +1,74 @@
+@import "./../../../styles/utils";
+
+$offset-top-mobile: doc-dp(6);
+$offset-top-desktop: doc-dp(7);
+$width-mobile: doc-dp(33);
+$width-desktop: doc-dp(40);
+
+.doc-drawer {
+  z-index: doc-index(drawer);
+
+  &__container {
+    @include doc-transition-setup(transform, $speed: enter, $easing: in-out);
+    background-color: doc-color(white);
+    border-top: doc-divider(light);
+    box-shadow: doc-shadow(16);
+    height: 100vh;
+    padding-top: $offset-top-mobile;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    transform: translateX(doc-dp(-45));
+    width: $width-mobile;
+  }
+}
+
+.doc-drawer--temporary {
+  &::before {
+    @include doc-transition-setup(opacity, $speed: enter, $easing: in-out);
+    background-color: rgba(black, .68);
+    content: '';
+    height: 100vh;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+
+  &.is-open {
+    &::before {
+      opacity: 1;
+      transition-duration: doc-speed(leave);
+      transition-timing-function: doc-ease(out);
+    }
+
+    .doc-drawer__container {
+      transform: translateX(0);
+      transition-duration: doc-speed(leave);
+      transition-timing-function: doc-ease(out);
+    }
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  $duration: doc-speed(leave, $screen: desktop);
+
+  .doc-drawer {
+    transition-duration: $duration;
+
+    &__conatiner {
+      transition-duration: $duration;
+      padding-top: $offset-top-desktop;
+      width: $width-desktop;
+    }
+
+    &.is-open {
+      &::before,
+      .doc-drawer__container {
+        transition-duration: $duration;
+      }
+    }
+  }
+}

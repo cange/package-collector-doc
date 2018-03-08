@@ -32,7 +32,7 @@ class Start extends React.Component {
           </footer>
         </div>
         <aside className="doc-layout__nav">
-          <Organisms.Nav
+          <Organisms.Drawer
             items={sidebarItems}
             onClose={() => this.setState({ isNavOpen: !this.state.isNavOpen })}
             open={this.state.isNavOpen}

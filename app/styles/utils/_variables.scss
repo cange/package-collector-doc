@@ -6,3 +6,15 @@
   $base: 8px;
   @return $base * $size;
 }
+
+/// Contains all z-indexes to keep depth management clean.
+/// @param {Keyword} $type
+/// @return {Number} Index number of given type
+@function doc-index($type) {
+  $indexes: (
+    toolbar: 1,
+    drawer: 2
+  );
+
+  @return map-get($indexes, $type);
+}

@@ -2,18 +2,12 @@ import './styles.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import NavAction from './NavAction'
+import Molecules from './../../molecules'
 
-const navTypes = {
-  ACTION: 'action',
-  SUBHEADER: 'subheader'
-}
 const propTypes = {
-  icon: PropTypes.string,
   items: PropTypes.array,
   onClose: PropTypes.func,
-  open: PropTypes.bool,
-  title: PropTypes.string
+  open: PropTypes.bool
 }
 const propDefaults = {
   items: {},
@@ -21,7 +15,7 @@ const propDefaults = {
   open: false
 }
 
-class Nav extends React.Component {
+class Drawer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -51,39 +45,23 @@ class Nav extends React.Component {
     }
   }
 
-  renderItems(items) {
-    return items.map((item, index) => {
-      if (item.type === navTypes.ACTION) {
-        return (<NavAction key={index} {...item} />)
-      } else if (item.type === navTypes.SUBHEADER) {
-        return (
-          <dt className="doc-nav__subheader">
-            {item.title}
-          </dt>
-        )
-      }
-    })
-  }
-
   render() {
     const wrapperClasses = classNames(
-      'doc-nav',
+      'doc-drawer doc-drawer--temporary',
       { 'is-open': this.state.isOpen }
     )
 
     return (
       <div className={wrapperClasses} ref={(ref) => { this.wrapper = ref }}>
-        <div className="doc-nav__drawer">
-          <dl className="doc-nav__list">
-            {this.renderItems(this.props.items)}
-          </dl>
+        <div className="doc-drawer__container">
+          <Molecules.Nav items={this.props.items} />
         </div>
       </div>
     )
   }
 }
 
-Nav.propTypes = propTypes
-Nav.propDefaults = propDefaults
+Drawer.propTypes = propTypes
+Drawer.propDefaults = propDefaults
 
-export default Nav
+export default Drawer

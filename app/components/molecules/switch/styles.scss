@@ -1,14 +1,7 @@
 @import "./../../../styles/utils";
 
-@mixin -transition-setup($props) {
-  transition-duration: doc-speed(base);
-  transition-property: $props;
-  transition-timing-function: doc-ease(in-out);
-  will-change: $props;
-}
-
 @mixin -touch-behaviour {
-  .doc-input-switch__thumb::after {
+  .doc-input-switch__thumb {
     z-index: 0;
 
     &::before {
@@ -23,7 +16,7 @@
     }
 
     &::after {
-      @include -transition-setup(transform background-color);
+      @include doc-transition-setup(transform background-color, $speed: small);
       background-color: transparent;
       border-radius: 1em;
       content: '';
@@ -82,7 +75,7 @@
   user-select: none;
 
   &__track {
-    @include -transition-setup(background-color);
+    @include doc-transition-setup(background-color, $speed: small);
     align-items: center;
     background-color: $track-off-color;
     border-radius: 1em;
@@ -100,7 +93,7 @@
   }
 
   &__thumb {
-    @include -transition-setup((transform, background-color));
+    @include doc-transition-setup(transform background-color, $speed: small);
     background-color: $thumb-off-color;
     border-radius: 1em;
     box-shadow: doc-shadow(1);
@@ -141,7 +134,17 @@
 }
 
 @include doc-breakpoint(medium, up) {
-  .doc-input-switch__label {
-    // @include -dimensions(doc-dp(3), doc-dp(4));
+  .doc-input-switch {
+    &__thumb {
+      transition-duration: doc-speed(small, $screen: desktop);
+
+      &::after {
+        transition-duration: doc-speed(small, $screen: desktop);
+      }
+    }
+
+    &__track {
+      transition-duration: doc-speed(small, $screen: desktop);
+    }
   }
 }

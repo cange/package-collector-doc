@@ -4,51 +4,42 @@ export default [
     type: 'subheader'
   }, {
     title: 'Atoms',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Atoms') }
   }, {
     title: 'Molecules',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Molecules') }
   }, {
     title: 'Another label',
     type: 'subheader'
   }, {
     title: 'Organisms',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Organisms') }
   }, {
     title: 'Molecules',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Molecules') }
   }, {
     title: 'Organisms',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Organisms') }
   }, {
-    title: 'Molecules',
-    type: 'action',
+    title: 'Whatever',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Whatever') }
   }, {
     title: 'Organisms',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Organisms') }
   }, {
     title: 'Molecules',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Molecules') }
   }, {
     title: 'Blubber',
-    type: 'action',
     icon: 'inbox',
-    onPress: () => {}
+    onPress: () => { console.log('Blubber') }
   }
 ]
