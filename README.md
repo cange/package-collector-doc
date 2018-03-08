@@ -70,7 +70,7 @@ Will run the linter for the whole codebase
 * [x] set up CSS autoprefixer
 * [x] set up linter for JavaScript
 * [ ] set up linter for SCSS
-* [ ] set up Sass documentation generator
+* [x] set up Sass documentation generator
 * [ ] set up an entrypoint for generic content
 
 ## Licensing
