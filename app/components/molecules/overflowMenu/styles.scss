@@ -50,7 +50,7 @@ $width-step-desktop: doc-dp(8);
 
   &.is-open {
     .doc-overflow-menu__toggle {
-      background-color: rgba(doc-color(grey), .1);
+      background-color: doc-button-state(active);
     }
     .doc-menu {
       @include -active-list;

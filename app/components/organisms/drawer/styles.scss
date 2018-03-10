@@ -40,7 +40,6 @@ $width-desktop: doc-dp(40);
 @include doc-breakpoint(medium, up) {
   $duration: doc-speed(large, $screen: desktop);
 
-
   .doc-drawer {
     transition-duration: $duration;
 

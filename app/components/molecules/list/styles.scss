@@ -8,6 +8,7 @@ $icon-size: doc-dp(3);
 $icon-color: doc-color(grey, 600);
 $title-color: doc-color(grey, 900);
 $subheader-color: doc-color(grey, 600);
+$active-color: doc-color(blue);
 
 .doc-list {
   display: flex;
@@ -46,9 +47,14 @@ $subheader-color: doc-color(grey, 600);
     padding-right: $offset-hori-mobile;
     width: 100%;
 
-    &:hover,
-    &:focus {
-      background-color: doc-color(grey, 100);
+    &.is-active {
+      background-color: doc-button-state(active);
+      color: $active-color;
+
+      .doc-list__title,
+      .doc-list__icon {
+        color: inherit;
+      }
     }
   }
 

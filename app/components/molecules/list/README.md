@@ -1,7 +1,7 @@
 ### Example
 
 ```js
-<ListControl items={[
+<List items={[
   {
     title: 'Inbox',
     icon: 'inbox',
@@ -9,6 +9,11 @@
   }, {
     title: 'Subheader',
     type: 'subheader'
+  }, {
+    active: true,
+    title: 'Sent mail',
+    icon: 'mail',
+    onPress: () => { console.log('ListControl action: sent mail') }
   }, {
     title: 'Drafts',
     icon: 'drafts',

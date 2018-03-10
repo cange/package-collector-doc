@@ -1,8 +1,12 @@
 import React from 'react'
 import Organisms from './../../organisms'
-import headerMenuItems from './headerMenuItems'
-import sidebarItems from './sidebarItems'
+import PropTypes from 'prop-types'
 import './styles.scss'
+
+const propTypes = {
+  headerItems: PropTypes.array.isRequired,
+  navigationItems: PropTypes.array.isRequired
+}
 
 class Start extends React.Component {
   constructor(props) {
@@ -18,7 +22,7 @@ class Start extends React.Component {
         <div className="doc-layout__body">
           <header className="doc-layout__header">
             <Organisms.Header
-              menuItems={headerMenuItems}
+              items={this.props.headerItems}
               onPressMainButton={() => this.setState({ isNavOpen: !this.state.isNavOpen })}
               title="Title"
               version="1.0.0"
@@ -33,7 +37,7 @@ class Start extends React.Component {
         </div>
         <aside className="doc-layout__nav">
           <Organisms.Drawer
-            items={sidebarItems}
+            items={this.props.navigationItems}
             onClose={() => this.setState({ isNavOpen: !this.state.isNavOpen })}
             open={this.state.isNavOpen}
           />
@@ -42,5 +46,7 @@ class Start extends React.Component {
     )
   }
 }
+
+Start.propTypes = propTypes
 
 export default Start

@@ -12,6 +12,14 @@ describe('<List />', () => {
     title: 'Subheader item',
     type: 'subheader'
   }
+  const nonActiveActionItem = {
+    title: 'Non-active item',
+    active: false
+  }
+  const activeActionItem = {
+    title: 'Active item',
+    active: true
+  }
   const maximalActionItem = {
     title: 'Maximal item',
     type: 'action',
@@ -90,6 +98,27 @@ describe('<List />', () => {
       it('calls onPress handler', () => {
         expect(onPressMock).toHaveBeenCalled()
       })
+    })
+  })
+
+  describe('when action item is active with value "true" is given', () => {
+    beforeEach(() => {
+      wrapper = shallow(<List items={[activeActionItem]}/>)
+    })
+
+    it('renders component with an active flagged action item', () => {
+      expect(wrapper.find('.doc-list__action.is-active').exists()).toBeTruthy()
+    })
+  })
+
+  describe('when action item is active with value "false" is given', () => {
+    beforeEach(() => {
+      wrapper = shallow(<List items={[nonActiveActionItem]}/>)
+    })
+
+    it('renders component with a non-active flagged action item', () => {
+      expect(wrapper.find('.doc-list__action').length).toBe(1)
+      expect(wrapper.find('.doc-list__action.is-active').exists()).toBeFalsy()
     })
   })
 })

@@ -6,7 +6,7 @@ import logoPath from './../../../assets/logo.svg'
 import './styles.scss'
 
 const propTypes = {
-  menuItems: PropTypes.array,
+  items: PropTypes.array,
   onPressMainButton: PropTypes.func,
   title: PropTypes.string,
   version: PropTypes.string
@@ -27,7 +27,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { title, version, menuItems } = this.props
+    const { title, version, items } = this.props
 
     return (
       <div className="doc-toolbar js-doc-sticky-header" role="banner">
@@ -48,7 +48,7 @@ class Header extends React.Component {
           </div>
           <div className="doc-toolbar__column">
             <div className="doc-toolbar__menu">
-              {this.renderMenuItems(menuItems)}
+              {this.renderMenuItems(items)}
             </div>
           </div>
         </div>

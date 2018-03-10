@@ -2,11 +2,8 @@
 /// @group interactions
 ////
 
-/// @param {Color} $color [grey]
-@mixin doc-button-behaviour($color: grey) {
-  $bg-hover: rgba($color, .05);
-  $bg-active: rgba($color, .1);
-
+/// @param {Color} $color [doc-color(grey)]
+@mixin doc-button-behaviour($color: doc-color(grey)) {
   $easing: doc-ease(base);
   $speed: doc-speed(base);
   transition-duration: $speed;
@@ -15,12 +12,24 @@
 
   &:hover,
   &:focus {
-    background-color: $bg-hover;
+    background-color: doc-button-state(hover, $color);
     outline: 0;
   }
 
   &:active {
-    background-color: $bg-active;
+    background-color: doc-button-state(active, $color);
     outline: 0;
   }
+}
+
+/// @param {Keyword} $state - The state of a button. Possible states are: `hover`, `active`
+/// @param {Color} $color [grey]
+/// @return {Color} hex value of the given state
+@function doc-button-state($state, $color: doc-color(grey)) {
+  $states: (
+    active: rgba($color, .1),
+    hover: rgba($color, .05)
+  );
+
+  @return map-get($states, $state);
 }

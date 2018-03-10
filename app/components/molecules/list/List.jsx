@@ -1,5 +1,6 @@
 import './styles.scss'
 import React from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Atoms from './../../atoms'
 
@@ -9,6 +10,7 @@ const navTypes = {
 }
 const propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
+    active: PropTypes.bool,
     icon: PropTypes.string,
     onPress: PropTypes.func,
     title: PropTypes.string.isRequired,
@@ -29,8 +31,13 @@ class List extends React.Component {
   }
 
   renderActionLine(item) {
+    const className = classNames(
+      'doc-list__action', {
+        'is-active': (item.active && item.active === true)
+      }
+    )
     return (
-      <Atoms.Button className="doc-list__action" onPress={(event) => item.onPress(event)} >
+      <Atoms.Button className={className} onPress={(event) => item.onPress(event)} >
         {item.icon && this.renderIcon(item.icon)}
         <div className="doc-list__title">
           {item.title}
