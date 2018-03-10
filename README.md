@@ -55,11 +55,29 @@ yarn test
 
 ## Style guide
 
+### Component documentation
+
+See the existing components by running:
+```sh
+yarn doc:components
+```
+this will create a static documentation in the `styleguide/` directory.
+
+### Sass documentation
+
+See the existing mixins and functions by running:
+```shell
+yarn doc:sass
+```
+this will create a static documentation in the `sassdoc/` directory.
+
+### Code linter
+
+The command below will run the linter on the whole codebase.
+
 ```shell
 yarn lint
 ```
-
-Will run the linter for the whole codebase
 
 ## TODOs
 

@@ -2,6 +2,8 @@
 /// @group typography
 ////
 
+/// Contains font sizes of the material guidelines.
+/// @link https://material.io/guidelines/style/typography.html#typography-other-typographic-guidelines
 /// @param {Keyword} $size-name
 /// @returns {Number} pixel
 @function doc-font-size($size-name) {
@@ -22,6 +24,8 @@
   @return map-get($sizes, $size-name);
 }
 
+/// Contains font style types of the material guidelines.
+/// @link https://material.io/guidelines/style/typography.html#typography-other-typographic-guidelines
 /// @param {Keyword} $style-name
 /// @returns {List}
 @function doc-font-style($style-name) {

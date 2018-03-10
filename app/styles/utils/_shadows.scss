@@ -2,10 +2,11 @@
 /// @group shadows
 ////
 
-/// The elevation based on https://material.io/guidelines/material-design/elevation-shadows.html
+/// The elevation based on the material guidelines for elevation shadows.
 /// @param {Number} $elevation - The elevation of shadow
 /// @param {Color} $shadow-color [black]
 /// @returns {List} shadow styles
+/// @link https://material.io/guidelines/material-design/elevation-shadows.html)
 @function doc-shadow($elevation, $shadow-color: black) {
   $umbra: rgba($shadow-color, .14);
   $penumbra: rgba($shadow-color, .12);

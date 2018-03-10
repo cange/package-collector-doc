@@ -10,7 +10,7 @@
     "build": "webpack",
     "start": "webpack-dev-server --open",
     "doc": "styleguidist server",
-    "doc:build": "styleguidist build",
+    "doc:components": "styleguidist build",
     "doc:sass": "sassdoc app/"
   },
   "repository": {
