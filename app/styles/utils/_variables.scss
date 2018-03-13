@@ -1,8 +1,20 @@
-/// FIXME Find the best way to calculate the proper value of a dp.
+// FIXME Find the best way to calculate the proper value of a dp.
 /// @param {Number} $size - The number of Density-independent pixels (dp) units to return
 /// @link https://material.io/guidelines/layout/units-measurements.html#units-measurements-density-independent-pixels-dp
 /// @returns {Number} Size of `dp` in pixel
 @function doc-dp($size) {
   $base: 8px;
   @return $base * $size;
+}
+
+/// Contains all z-indexes to keep depth management clean.
+/// @param {Keyword} $type
+/// @return {Number} Index number of given type
+@function doc-index($type) {
+  $indexes: (
+    toolbar: 1,
+    drawer: 2
+  );
+
+  @return map-get($indexes, $type);
 }

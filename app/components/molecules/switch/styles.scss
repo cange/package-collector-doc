@@ -1,0 +1,150 @@
+@import "./../../../styles/utils";
+
+@mixin -touch-behaviour {
+  .doc-input-switch__thumb {
+    z-index: 0;
+
+    &::before {
+      background-color: inherit;
+      border-radius: 1em;
+      content: '';
+      display: block;
+      height: inherit;
+      position: absolute;
+      width: inherit;
+      z-index: 2;
+    }
+
+    &::after {
+      @include doc-transition-setup(transform background-color, $speed: small);
+      background-color: transparent;
+      border-radius: 1em;
+      content: '';
+      display: block;
+      height: inherit;
+      position: absolute;
+      width: inherit;
+      z-index: 1;
+    }
+  }
+
+  &:active {
+    .doc-input-switch__thumb::after {
+      background-color: rgba($track-off-color, .25);
+      transform: scale(2.5);
+    }
+  }
+
+  .doc-input-switch__input::after {
+    &:checked:active ~ {
+      * .doc-input-switch__thumb::after {
+        background-color: rgba($track-on-color, .25);
+      }
+    }
+  }
+}
+
+.doc-input-switch {
+  $track-height: .75em;
+  $track-width: 1.75em;
+  $thumb-size: 1em;
+  $on-color: teal;
+
+  $thumb-on-color: doc-color($on-color, 500);
+  $track-on-color: doc-color($on-color, 200);
+
+  $thumb-off-color: doc-color(grey, 50);
+  $track-off-color: doc-color(grey, 500);
+
+  // Thumb Disabled: Grey 400, #BDBDBD, Opacity 100%
+  // Track Disabled: #000000, Opacity 12%
+  $thumb-disabled-color: doc-color(grey, 400);
+  $track-disabled-color: doc-color(grey, 300);
+
+  $offset: ($thumb-size - $track-height) / 2;
+  $thumb-off-x: translateX(-$offset);
+  $thumb-on-x: translateX($track-width - $thumb-size + $offset);
+
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  font-weight: normal;
+  justify-content: space-between;
+  min-height: 2em;
+  position: relative;
+  user-select: none;
+
+  &__track {
+    @include doc-transition-setup(background-color, $speed: small);
+    align-items: center;
+    background-color: $track-off-color;
+    border-radius: 1em;
+    content: '';
+    cursor: pointer;
+    display: block;
+    display: flex;
+    font-size: inherit;
+    height: $track-height;
+    margin-left: $offset;
+    margin-right: $offset;
+    position: relative;
+    user-select: none;
+    width: $track-width;
+  }
+
+  &__thumb {
+    @include doc-transition-setup(transform background-color, $speed: small);
+    background-color: $thumb-off-color;
+    border-radius: 1em;
+    box-shadow: doc-shadow(1);
+    cursor: pointer;
+    display: block;
+    font-size: inherit;
+    height: $thumb-size;
+    position: absolute;
+    transform: $thumb-off-x;
+    user-select: none;
+    width: $thumb-size;
+  }
+
+  &__input {
+    display: none;
+
+    &:checked ~ {
+      .doc-input-switch__track {
+        background-color: $track-on-color;
+      }
+
+      * .doc-input-switch__thumb {
+        background-color: $thumb-on-color;
+        transform: $thumb-on-x;
+      }
+    }
+
+    &:disabled ~ {
+      .doc-input-switch__track {
+        background-color: $track-disabled-color;
+      }
+
+      * .doc-input-switch__thumb {
+        background-color: $thumb-disabled-color;
+      }
+    }
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  .doc-input-switch {
+    &__thumb {
+      transition-duration: doc-speed(small, $screen: desktop);
+
+      &::after {
+        transition-duration: doc-speed(small, $screen: desktop);
+      }
+    }
+
+    &__track {
+      transition-duration: doc-speed(small, $screen: desktop);
+    }
+  }
+}

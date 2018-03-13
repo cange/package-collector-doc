@@ -1,7 +1,8 @@
-import './styles/base.scss'
-
 import React from 'react'
 import ReactDom from 'react-dom'
-import { Layout } from './components/layout'
+import headerItems from './data/headerItems'
+import navigationItems from './data/navigationItems'
+import { Templates } from './components'
+import './styles/base.scss'
 
-ReactDom.render(<Layout nav="my nav" />, document.getElementById('mount'))
+ReactDom.render(<Templates.Start navigationItems={navigationItems} headerItems={headerItems} />, document.getElementById('mount'))

@@ -1,0 +1,89 @@
+@import "./../../../styles/utils";
+
+$offset: doc-dp(.5);
+$width: doc-dp(30);
+$shadow: doc-shadow(2);
+$size: doc-dp(2);
+$zindex: doc-index(toolbar);
+$title-font-size: 21px;
+$icon-size: 24px;
+
+.doc-toolbar {
+  background-color: doc-color(grey, 100);
+  box-shadow: $shadow;
+  left: 0;
+  min-width: $width;
+  position: relative;
+  // position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $zindex;
+
+  &__outer {
+    align-items: center;
+    display: flex;
+    height: doc-dp(7);
+    justify-content: space-between;
+    padding-left: $offset;
+    padding-right: $offset;
+    position: relative;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center
+  }
+
+  &__column {
+    &:nth-child(2) {
+      flex-grow: 1;
+    }
+
+    &:first-child {
+      flex-basis: doc-dp(9) - $offset;
+    }
+
+    &:last-child {
+      flex-basis: doc-dp(3);
+    }
+  }
+
+  &__logo {
+    font-size: doc-dp(3);
+    box-sizing: content-box;
+    flex-basis: doc-dp(3);
+    margin-right: doc-dp(1);
+
+    img {
+      height: 1em;
+    }
+  }
+
+  &__menu {
+    margin-left: doc-dp(1);
+  }
+
+  &__title {
+    font-size: $title-font-size;
+    line-height: .7;
+    flex-grow: 1;
+  }
+
+  &__version {
+    float: right;
+  }
+}
+
+@include doc-breakpoint(medium, up) {
+  .doc-toolbar {
+    &__outer {
+      height: doc-dp(8);
+      padding-left: $offset * 2;
+      padding-right: $offset * 2;
+    }
+
+    &__column:first-child {
+      flex-basis: doc-dp(9);
+    }
+  }
+}

@@ -1,3 +1,0 @@
-```js
-<Icon name="inbox" />
-```

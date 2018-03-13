@@ -1,8 +1,8 @@
 # package-collector-doc
 
-> [![Build Status](https://travis-ci.org/cange/package-collector-doc.svg?branch=master)](https://travis-ci.org/cange/package-collector-doc)
+[![Build Status](https://travis-ci.org/cange/package-collector-doc.svg?branch=master)](https://travis-ci.org/cange/package-collector-doc)
 
-Summarize consumed packages as documentation
+> A study of state of the art frameworks and mythologies
 
 ## Installing / Getting started
 
@@ -55,11 +55,29 @@ yarn test
 
 ## Style guide
 
+### Component documentation
+
+See the existing components by running:
+```sh
+yarn doc:components
+```
+this will create a static documentation in the `styleguide/` directory.
+
+### Sass documentation
+
+See the existing mixins and functions by running:
+```shell
+yarn doc:sass
+```
+this will create a static documentation in the `sassdoc/` directory.
+
+### Code linter
+
+The command below will run the linter on the whole codebase.
+
 ```shell
 yarn lint
 ```
-
-Will run the linter for the whole codebase
 
 ## TODOs
 
@@ -69,8 +87,10 @@ Will run the linter for the whole codebase
 * [x] set up a test runner
 * [x] set up CSS autoprefixer
 * [x] set up linter for JavaScript
+* [x] set up Sass documentation generator
 * [ ] set up linter for SCSS
-* [ ] set up Sass documentation generator
+* [ ] set up state handling
+* [ ] set up routing (single page approach)
 * [ ] set up an entrypoint for generic content
 
 ## Licensing

@@ -2,10 +2,11 @@
 /// @group shadows
 ////
 
-/// The elevation based on https://material.io/guidelines/material-design/elevation-shadows.html
+/// The elevation based on the material guidelines for elevation shadows.
 /// @param {Number} $elevation - The elevation of shadow
 /// @param {Color} $shadow-color [black]
 /// @returns {List} shadow styles
+/// @link https://material.io/guidelines/material-design/elevation-shadows.html)
 @function doc-shadow($elevation, $shadow-color: black) {
   $umbra: rgba($shadow-color, .14);
   $penumbra: rgba($shadow-color, .12);
@@ -31,16 +32,16 @@
   }
 
   $elevations: (
-    dp1:  (0 0      .3rem        $umbra, 0 .2rem .2rem        $penumbra, 0 .1rem  .2rem  $ambient),
-    dp2:  (0 0      .4rem        $umbra, 0 .3rem .4rem        $penumbra, 0 .1rem  .5rem  $ambient),
-    dp3:  (0 .3rem  .3rem        $umbra, 0 .3rem .4rem        $penumbra, 0 .1rem  .8rem  $ambient),
-    dp4:  (0 .2rem  .4rem        $umbra, 0 .4rem .5rem        $penumbra, 0 .1rem  1rem   $ambient),
-    dp6:  (0 .6rem  1rem         $umbra, 0 .1rem 1.8rem       $penumbra, 0 .3rem  .5rem  $ambient),
-    dp8:  (0 .8rem  1rem   .1rem $umbra, 0 .3rem 1.4rem .3rem $penumbra, 0 .4rem  1.5rem $ambient),
-    dp9:  (0 .9rem  1.2rem .1rem $umbra, 0 .3rem 1.6rem .2rem $penumbra, 0 .5rem  .6rem  $ambient),
-    dp12: (0 1.2rem 1.7rem .2rem $umbra, 0 .5rem 2.2rem .4rem $penumbra, 0 .7rem  .8rem  $ambient),
-    dp16: (0 1.6rem 2.4rem .2rem $umbra, 0 .6rem 3rem   .5rem $penumbra, 0 .8rem  1rem   $ambient),
-    dp24: (0 2.4rem 3.8rem .3rem $umbra, 0 .9rem 4.6rem .8rem $penumbra, 0 1.1rem 1.5rem $ambient)
+    dp1:  (0  0     3px     $umbra, 0 2px          $penumbra, 0  1px  2px $ambient),
+    dp2:  (0  0     4px     $umbra, 0 3px  4px     $penumbra, 0  1px  5px $ambient),
+    dp3:  (0  3px   3px     $umbra, 0 3px  4px     $penumbra, 0  1px  8px $ambient),
+    dp4:  (0  2px   4px     $umbra, 0 4px  5px     $penumbra, 0  1px 10px $ambient),
+    dp6:  (0  6px  10px     $umbra, 0 1px 18px     $penumbra, 0  3px  5px $ambient),
+    dp8:  (0  8px  10px 1px $umbra, 0 3px 14px 3px $penumbra, 0  4px 15px $ambient),
+    dp9:  (0  9px  12px 1px $umbra, 0 3px 16px 2px $penumbra, 0  5px  6px $ambient),
+    dp12: (0 12px  17px 2px $umbra, 0 5px 22px 4px $penumbra, 0  7px  8px $ambient),
+    dp16: (0 16px  24px 2px $umbra, 0 6px 30px 5px $penumbra, 0  8px 10px $ambient),
+    dp24: (0 24px  38px 3px $umbra, 0 9px 46px 8px $penumbra, 0 11px 15px $ambient)
   );
 
   @return map-get($elevations, dp#{$elevation});

@@ -1,0 +1,14 @@
+////
+/// @group divider
+////
+
+/// @param {Keyword} $theme - Expected type of `light` or `dark`.
+/// @returns {List} border styles
+@function doc-divider($theme) {
+  $themes: (
+    light: darken(doc-color(white), 12),
+    dark: lighten(doc-color(black), 12)
+  );
+
+  @return 1px map-get($themes, $theme) solid;
+}

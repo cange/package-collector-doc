@@ -1,0 +1,12 @@
+@import "./../../../styles/utils";
+
+.doc-main {
+  margin: doc-dp(2);
+
+  &__content {
+    background-color: doc-color(yellow);
+    max-width: doc-dp(146);
+    min-width: doc-dp(40);
+    overflow: auto;
+  }
+}
