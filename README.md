@@ -1,8 +1,8 @@
 # package-collector-doc
 
-> [![Build Status](https://travis-ci.org/cange/package-collector-doc.svg?branch=master)](https://travis-ci.org/cange/package-collector-doc)
+[![Build Status](https://travis-ci.org/cange/package-collector-doc.svg?branch=master)](https://travis-ci.org/cange/package-collector-doc)
 
-Summarize consumed packages as documentation
+> A study of state of the art frameworks and mythologies
 
 ## Installing / Getting started
 
@@ -87,8 +87,10 @@ yarn lint
 * [x] set up a test runner
 * [x] set up CSS autoprefixer
 * [x] set up linter for JavaScript
-* [ ] set up linter for SCSS
 * [x] set up Sass documentation generator
+* [ ] set up linter for SCSS
+* [ ] set up state handling
+* [ ] set up routing (single page approach)
 * [ ] set up an entrypoint for generic content
 
 ## Licensing
