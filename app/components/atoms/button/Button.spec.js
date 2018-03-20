@@ -73,7 +73,9 @@ describe('<Button />', () => {
     })
 
     it('bubbles onPress event', () => {
-      expect(onPressMock).toHaveBeenCalled()
+      expect(onPressMock).toBeCalledWith(
+        expect.objectContaining({ target: expect.any(Object) })
+      )
     })
   })
 })

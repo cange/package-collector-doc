@@ -9,13 +9,20 @@ const navTypes = {
   SUBHEADER: 'subheader'
 }
 const propTypes = {
+  /** Identifier of the current active item */
+  activeItemId: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({
     active: PropTypes.bool,
     icon: PropTypes.string,
     onPress: PropTypes.func,
     title: PropTypes.string.isRequired,
     type: PropTypes.oneOf([navTypes.ACTION, navTypes.SUBHEADER])
-  }))
+  })).isRequired,
+  onPress: PropTypes.func
+}
+const defaultProps = {
+  activeItemId: '',
+  onPress: () => {}
 }
 /**
  * Lists present multiple line items vertically as a single continuous element.
@@ -30,14 +37,19 @@ class List extends React.Component {
     )
   }
 
+  handlePress(item, event) {
+    item.onPress(event)
+    this.props.onPress(event, item.id)
+  }
+
   renderActionLine(item) {
-    const className = classNames(
-      'doc-list__action', {
-        'is-active': (item.active && item.active === true)
-      }
-    )
+    const { activeItemId } = this.props
+    const className = classNames('doc-list__action', {
+      'is-active': item.id === activeItemId
+    })
+
     return (
-      <Atoms.Button className={className} onPress={(event) => item.onPress(event)} >
+      <Atoms.Button className={className} onPress={this.handlePress.bind(this, item)}>
         {item.icon && this.renderIcon(item.icon)}
         <div className="doc-list__title">
           {item.title}
@@ -74,5 +86,6 @@ class List extends React.Component {
 }
 
 List.propTypes = propTypes
+List.defaultProps = defaultProps
 
 export default List

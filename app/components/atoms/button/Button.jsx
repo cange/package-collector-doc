@@ -29,13 +29,7 @@ const defaultProps = {
 }
 
 class Button extends React.Component {
-  constructor(props) {
-    super(props)
-    this.defaultClassName = 'doc-button'
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick(event) {
+  handlePress(event) {
     this.props.onPress(event)
   }
 
@@ -48,9 +42,9 @@ class Button extends React.Component {
       type
     } = this.props
     let props = {
-      className: classNames(this.defaultClassName, className),
+      className: classNames('doc-button', className),
       type,
-      onClick: this.handleClick
+      onClick: this.handlePress.bind(this)
     }
 
     if (title.length) {
