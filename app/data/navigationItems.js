@@ -13,7 +13,6 @@ export default [
     title: 'Sent mail',
     id: 'sent-mail',
     icon: 'send',
-    active: true,
     onPress: () => { console.log('Sent mail') }
   }, {
     title: 'Drafts',
