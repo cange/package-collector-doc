@@ -4,7 +4,7 @@ export const types = {
 }
 
 export default {
-  navToggle: () => ({
+  toggleNav: () => ({
     type: types.NAV_TOGGLE
   }),
   updateActiveItem: (id) => ({

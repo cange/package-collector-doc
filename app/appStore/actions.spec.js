@@ -1,12 +1,12 @@
 import actions, { types } from './actions'
 
 describe('actions', () => {
-  describe('.navToggle()', () => {
+  describe('.toggleNav()', () => {
     it('creates an action to update the navigation state', () => {
       const expectedAction = {
         type: types.NAV_TOGGLE
       }
-      expect(actions.navToggle()).toEqual(expectedAction)
+      expect(actions.toggleNav()).toEqual(expectedAction)
     })
   })
 

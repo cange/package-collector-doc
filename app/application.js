@@ -5,7 +5,7 @@ import navigationItems from './data/navigationItems'
 import './styles/base.scss'
 import { Templates } from './components'
 import { connect } from 'react-redux'
-import store, { navToggle, updateActiveItem } from './appStore'
+import store, { toggleNav, updateActiveItem } from './appStore'
 
 const mapStateToProps = state => (
   {
@@ -16,8 +16,8 @@ const mapStateToProps = state => (
   }
 )
 const mapDispatchToProps = dispatch => ({
-  onCloseNav: () => dispatch(navToggle()),
-  onPressMainButton: () => dispatch(navToggle()),
+  onCloseNav: () => dispatch(toggleNav()),
+  onPressMainButton: () => dispatch(toggleNav()),
   onPressNav: (_, id) => {
     dispatch(updateActiveItem(id))
   }
