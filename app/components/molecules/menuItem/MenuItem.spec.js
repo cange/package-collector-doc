@@ -38,7 +38,7 @@ describe('<MenuItem />', () => {
     })
     it('bubbles onPress event', () => {
       wrapper.find('button').simulate('click')
-      expect(onPressMock).toHaveBeenCalled()
+      expect(onPressMock).toBeCalled()
     })
   })
 
@@ -57,7 +57,7 @@ describe('<MenuItem />', () => {
     })
     it('bubbles onChange event', () => {
       wrapper.find('input').simulate('change')
-      expect(onChangeMock).toHaveBeenCalled()
+      expect(onChangeMock).toBeCalled()
     })
 
     describe('when "checked" attribute is given', () => {

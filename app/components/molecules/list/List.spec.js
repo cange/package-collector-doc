@@ -1,35 +1,28 @@
-import { shallow } from 'enzymeSetup'
+import { mount, shallow } from 'enzymeSetup'
 import React from 'react'
 import List from './List'
 
 describe('<List />', () => {
   let wrapper
-  const onPressMock = jest.fn()
-  const minimalItem = {
+  const itemMinimal = {
+    id: 'abc123',
     title: 'Minimal item'
+  }
+  const actionItemMaximal = {
+    id: 'abc123',
+    title: 'Maximal item',
+    type: 'action',
+    onPress: jest.fn(),
+    icon: '<icon>'
   }
   const subheaderItem = {
     title: 'Subheader item',
     type: 'subheader'
   }
-  const nonActiveActionItem = {
-    title: 'Non-active item',
-    active: false
-  }
-  const activeActionItem = {
-    title: 'Active item',
-    active: true
-  }
-  const maximalActionItem = {
-    title: 'Maximal item',
-    type: 'action',
-    onPress: onPressMock,
-    icon: '<icon>'
-  }
 
   describe('when an item with minimal data given', () => {
     beforeEach(() => {
-      wrapper = shallow(<List items={[minimalItem]}/>)
+      wrapper = shallow(<List items={[itemMinimal]}/>)
     })
 
     it('renders component with an action item', () => {
@@ -65,7 +58,7 @@ describe('<List />', () => {
 
   describe('when multiple items with different type are given', () => {
     beforeEach(() => {
-      wrapper = shallow(<List items={[minimalItem, subheaderItem, minimalItem]}/>)
+      wrapper = shallow(<List items={[itemMinimal, subheaderItem, itemMinimal]}/>)
     })
 
     it('renders items in correct order', () => {
@@ -77,48 +70,61 @@ describe('<List />', () => {
     })
   })
 
-  describe('when action item with icon items are given', () => {
-    beforeEach(() => {
-      wrapper = shallow(<List items={[maximalActionItem]}/>)
-    })
-
-    it('renders component with an action item', () => {
-      expect(wrapper.find('.doc-list__action').exists()).toBeTruthy()
-    })
-
-    it('renders item with icon', () => {
-      expect(wrapper.find('Icon').prop('name')).toBe('<icon>')
-    })
-
-    describe('when item has been pressed', () => {
+  describe('when action item given', () => {
+    describe('and an icon is given', () => {
       beforeEach(() => {
-        wrapper.find('Button').simulate('press')
+        wrapper = shallow(<List items={[actionItemMaximal]}/>)
       })
 
-      it('calls onPress handler', () => {
-        expect(onPressMock).toHaveBeenCalled()
+      it('renders component with an action item', () => {
+        expect(wrapper.find('Button').exists()).toBeTruthy()
+      })
+
+      it('renders item with icon', () => {
+        expect(wrapper.find('Icon').prop('name')).toBe('<icon>')
       })
     })
-  })
 
-  describe('when action item is active with value "true" is given', () => {
-    beforeEach(() => {
-      wrapper = shallow(<List items={[activeActionItem]}/>)
+    describe('and has been pressed', () => {
+      const onPressListMock = jest.fn()
+
+      beforeEach(() => {
+        wrapper = mount(<List onPress={onPressListMock} items={[actionItemMaximal]}/>)
+        wrapper.find('button').simulate('click')
+      })
+
+      it('calls button onPress handler', () => {
+        expect(actionItemMaximal.onPress).toBeCalledWith(
+          expect.objectContaining({ target: expect.any(Object) })
+        )
+      })
+      it('calls list onPress handler', () => {
+        expect(onPressListMock).toBeCalledWith(
+          expect.objectContaining({ target: expect.any(Object) }),
+          'abc123'
+        )
+      })
     })
 
-    it('renders component with an active flagged action item', () => {
-      expect(wrapper.find('.doc-list__action.is-active').exists()).toBeTruthy()
-    })
-  })
+    describe('and has matching activeItemId given', () => {
+      beforeEach(() => {
+        wrapper = shallow(<List activeItemId="abc123" items={[itemMinimal]}/>)
+      })
 
-  describe('when action item is active with value "false" is given', () => {
-    beforeEach(() => {
-      wrapper = shallow(<List items={[nonActiveActionItem]}/>)
+      it('renders item with an active flag', () => {
+        expect(wrapper.find('Button').hasClass('is-active')).toBeTruthy()
+      })
     })
 
-    it('renders component with a non-active flagged action item', () => {
-      expect(wrapper.find('.doc-list__action').length).toBe(1)
-      expect(wrapper.find('.doc-list__action.is-active').exists()).toBeFalsy()
+    describe('and non matching activeItemId given', () => {
+      beforeEach(() => {
+        wrapper = shallow(<List activeItemId="anything" items={[itemMinimal]}/>)
+      })
+
+      it('renders item without active flag', () => {
+        expect(wrapper.find('Button').length).toBe(1)
+        expect(wrapper.find('Button').hasClass('is-active')).toBeFalsy()
+      })
     })
   })
 })

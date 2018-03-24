@@ -18,8 +18,10 @@ module.exports = {
   entry: {
     application: './app/application.js',
     vendor: [
-      'react',
       'react-dom',
+      'react-redux',
+      'react',
+      'redux',
       'classnames'
     ]
   },

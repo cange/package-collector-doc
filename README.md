@@ -18,6 +18,7 @@ This will install all dependencies.
 ### Built With
 
 * [React](https://reactjs.org) as web engine
+* [Redux](https://redux.js.org) for state management
 * [Babeljs](http://babeljs.io) as ES2015+ transpiler engine
 * [webpack](http://webpack.js.org) as build engine
 * [Sass](http://sass-lang.com) as CSS preprocess engine
@@ -88,8 +89,9 @@ yarn lint
 * [x] set up CSS autoprefixer
 * [x] set up linter for JavaScript
 * [x] set up Sass documentation generator
+* [x] set up state handling
+* [ ] set up type checker
 * [ ] set up linter for SCSS
-* [ ] set up state handling
 * [ ] set up routing (single page approach)
 * [ ] set up an entrypoint for generic content
 

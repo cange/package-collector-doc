@@ -79,7 +79,7 @@ describe('<Switch />', () => {
     })
 
     it('bubbles onChange event', () => {
-      expect(onChangeMock).toHaveBeenCalled()
+      expect(onChangeMock).toBeCalled()
     })
   })
 })

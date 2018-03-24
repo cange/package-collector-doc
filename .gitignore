@@ -60,3 +60,4 @@ typings/
 dist/
 styleguide/
 sassdoc/
+.DS_Store
