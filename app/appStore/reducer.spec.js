@@ -7,13 +7,13 @@ describe('reducer', () => {
   })
 
   it('handles NAV_TOGGLE action', () => {
-    expect(reducer(undefined, { type: types.NAV_TOGGLE })).toEqual(expect.objectContaining({ navOpen: false }))
+    expect(reducer(undefined, { type: types.NAV_TOGGLE })).toEqual(expect.objectContaining({ navOpen: true }))
   })
 
   it('handles continuation NAV_TOGGLE action', () => {
-    const state = { navOpen: false }
+    const state = { navOpen: true }
 
-    expect(reducer(state, { type: types.NAV_TOGGLE })).toEqual(expect.objectContaining({ navOpen: true }))
+    expect(reducer(state, { type: types.NAV_TOGGLE })).toEqual(expect.objectContaining({ navOpen: false }))
   })
 
   it('handles NAV_ACTIVE_ITEM action', () => {
