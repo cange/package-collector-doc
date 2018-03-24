@@ -1,7 +1,7 @@
 import { types } from './actions'
 
 export const initialState = {
-  navOpen: true,
+  navOpen: false,
   activePageId: ''
 }
 
