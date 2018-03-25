@@ -10,3 +10,6 @@ install:
 script:
   - yarn lint
   - yarn test
+  - yarn build
+  - yarn docs:components
+  - yarn docs:sass
