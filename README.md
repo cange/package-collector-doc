@@ -60,15 +60,20 @@ yarn test
 
 See the existing components by running:
 ```sh
-yarn doc:components
+yarn docs:components
 ```
 this will create a static documentation in the `styleguide/` directory.
+
+To see live updates run the server by running:
+```sh
+yarn docs:start
+```
 
 ### Sass documentation
 
 See the existing mixins and functions by running:
 ```shell
-yarn doc:sass
+yarn docs:sass
 ```
 this will create a static documentation in the `sassdoc/` directory.
 
@@ -91,6 +96,7 @@ yarn lint
 * [x] set up Sass documentation generator
 * [x] set up state handling
 * [ ] set up type checker
+* [ ] set up node server
 * [ ] set up linter for SCSS
 * [ ] set up routing (single page approach)
 * [ ] set up an entrypoint for generic content

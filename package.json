@@ -9,9 +9,9 @@
     "lint": "eslint --ext .jsx,.js app/",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "doc": "styleguidist server",
-    "doc:components": "styleguidist build",
-    "doc:sass": "sassdoc app/"
+    "docs:start": "styleguidist server",
+    "docs:components": "styleguidist build",
+    "docs:sass": "sassdoc app/"
   },
   "repository": {
     "type": "git",
