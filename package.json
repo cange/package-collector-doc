@@ -7,8 +7,8 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint --ext .jsx,.js app/",
-    "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack",
+    "start": "webpack-dev-server --open",
     "docs:start": "styleguidist server",
     "docs:components": "styleguidist build",
     "docs:sass": "sassdoc app/"
