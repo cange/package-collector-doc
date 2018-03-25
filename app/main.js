@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import headerItems from './data/headerItems'
 import navigationItems from './data/navigationItems'
-import './styles/base.scss'
 import { Templates } from './components'
 import { connect } from 'react-redux'
 import store, { actions } from './appStore'
+import './styles/base.scss'
 
 const mapStateToProps = state => (
   {
