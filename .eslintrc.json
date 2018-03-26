@@ -2,10 +2,12 @@
   "parser": "babel-eslint",
   "extends": [
     "standard",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "plugins": [
-    "standard"
+    "standard",
+    "flowtype"
   ],
   "rules": {
     "space-before-function-paren": ["error", "never"]

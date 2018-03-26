@@ -1,0 +1,14 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+# handles style imports ie `import './styles.scss'`
+module.name_mapper='.+\.s?css' -> '<PROJECT_ROOT>/config/flow/CSSModule.flow.js'
+
+[strict]

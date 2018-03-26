@@ -1,39 +1,36 @@
+// @flow
 import './styles.scss'
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import classNames from 'classnames'
 
-const propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
+type Props = {
+  children: React.Node,
   /** Class to add additional styles */
-  className: PropTypes.string,
+  className: string,
   /** If true, disable all interactions for this component */
-  disabled: PropTypes.bool,
+  disabled: boolean,
   /** Text to display for blindness accessibility features */
-  title: PropTypes.string,
+  title: string,
   /** The [type values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) of the button */
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  type: 'button' | 'submit' | 'reset',
   /** Handler to be called when the user taps the button */
-  onPress: PropTypes.func
+  onPress: (event: SyntheticEvent<HTMLButtonElement>) => void
 }
 
-const defaultProps = {
-  type: 'button',
-  className: '',
-  title: '',
-  disabled: false,
-  onPress: () => {}
-}
+class Button extends React.Component<Props> {
+  static defaultProps = {
+    type: 'button',
+    className: '',
+    title: '',
+    disabled: false,
+    onPress: () => {}
+  }
 
-class Button extends React.Component {
-  handlePress(event) {
+  handlePress(event: SyntheticEvent<HTMLButtonElement>) {
     this.props.onPress(event)
   }
 
-  render() {
+  render(): React.Node {
     const {
       children,
       className,
@@ -41,7 +38,7 @@ class Button extends React.Component {
       title,
       type
     } = this.props
-    let props = {
+    let props: Object = {
       className: classNames('doc-button', className),
       type,
       onClick: this.handlePress.bind(this)
@@ -62,8 +59,5 @@ class Button extends React.Component {
     )
   }
 }
-
-Button.propTypes = propTypes
-Button.defaultProps = defaultProps
 
 export default Button
